@@ -1,0 +1,224 @@
+---
+const base = import.meta.env.BASE_URL;
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const baseClean = base.replace(/\/$/, "");
+
+const links = [
+	{ href: `${base}`, label: "Acasă", match: baseClean || "/" },
+	{ href: `${base}servicii`, label: "Servicii", match: `${baseClean}/servicii` },
+	{ href: `${base}despre`, label: "Despre", match: `${baseClean}/despre` },
+	{ href: `${base}contact`, label: "Contact", match: `${baseClean}/contact` },
+];
+
+function isActive(match: string) {
+	if (match === baseClean || match === "/") {
+		return pathname === baseClean || pathname === "" || pathname === "/";
+	}
+	return pathname === match || pathname.endsWith(match.replace(baseClean, ""));
+}
+---
+
+<header class="site-header">
+	<div class="container header-inner">
+		<a class="brand" href={base} aria-label="SSM & SU Expert SafetyWork — acasă">
+			<img src={`${base}logo.svg`} alt="" width="40" height="40" />
+			<span class="brand-text">
+				<strong>SSM &amp; SU</strong>
+				<span>Expert SafetyWork</span>
+			</span>
+		</a>
+
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Meniu">
+			<span></span>
+			<span></span>
+		</button>
+
+		<nav id="site-nav" class="site-nav" aria-label="Navigare principală">
+			{
+				links.map((link) => (
+					<a href={link.href} class:list={[{ active: isActive(link.match) }]}>
+						{link.label}
+					</a>
+				))
+			}
+			<a class="btn btn-primary nav-cta" href={`${base}contact`}>Solicită informații</a>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: fixed;
+		inset: 0 0 auto;
+		z-index: 50;
+		height: var(--header-h);
+		backdrop-filter: blur(14px);
+		background: rgba(247, 245, 242, 0.86);
+		border-bottom: 1px solid rgba(110, 58, 40, 0.1);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 100%;
+		gap: 1rem;
+	}
+
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		text-decoration: none;
+		color: var(--color-ink);
+		min-width: 0;
+	}
+
+	.brand img {
+		flex-shrink: 0;
+	}
+
+	.brand-text {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.15;
+		font-family: var(--font-display);
+	}
+
+	.brand-text strong {
+		font-size: 0.95rem;
+		font-weight: 800;
+	}
+
+	.brand-text span {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--color-brown);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.site-nav {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem 1.25rem;
+	}
+
+	.site-nav a:not(.btn) {
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.92rem;
+		color: var(--color-ink-soft);
+		padding: 0.35rem 0;
+		position: relative;
+	}
+
+	.site-nav a:not(.btn)::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 2px;
+		background: var(--color-gold);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.25s var(--ease);
+	}
+
+	.site-nav a:not(.btn):hover::after,
+	.site-nav a:not(.btn).active::after {
+		transform: scaleX(1);
+	}
+
+	.nav-cta {
+		padding: 0.65rem 1rem;
+		font-size: 0.88rem;
+	}
+
+	.nav-toggle {
+		display: none;
+		width: 2.5rem;
+		height: 2.5rem;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+		padding: 0.5rem;
+	}
+
+	.nav-toggle span {
+		display: block;
+		height: 2px;
+		margin: 6px 0;
+		background: var(--color-ink);
+		transition: transform 0.25s var(--ease);
+	}
+
+	@media (max-width: 860px) {
+		.nav-toggle {
+			display: block;
+		}
+
+		.site-nav {
+			position: absolute;
+			top: var(--header-h);
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0;
+			padding: 0.75rem 1.25rem 1.25rem;
+			background: rgba(247, 245, 242, 0.97);
+			border-bottom: 1px solid rgba(110, 58, 40, 0.1);
+			transform: translateY(-120%);
+			opacity: 0;
+			pointer-events: none;
+			transition:
+				transform 0.3s var(--ease),
+				opacity 0.3s var(--ease);
+		}
+
+		.site-nav.is-open {
+			transform: translateY(0);
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.site-nav a:not(.btn) {
+			padding: 0.85rem 0;
+			border-bottom: 1px solid rgba(110, 58, 40, 0.08);
+		}
+
+		.nav-cta {
+			margin-top: 0.85rem;
+			width: 100%;
+		}
+
+		body.nav-open .nav-toggle span:first-child {
+			transform: translateY(4px) rotate(45deg);
+		}
+
+		body.nav-open .nav-toggle span:last-child {
+			transform: translateY(-4px) rotate(-45deg);
+		}
+	}
+</style>
+
+<script>
+	const toggle = document.querySelector(".nav-toggle");
+	const nav = document.querySelector(".site-nav");
+
+	toggle?.addEventListener("click", () => {
+		const open = nav?.classList.toggle("is-open");
+		toggle.setAttribute("aria-expanded", open ? "true" : "false");
+		document.body.classList.toggle("nav-open", !!open);
+	});
+
+	nav?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => {
+			nav.classList.remove("is-open");
+			toggle?.setAttribute("aria-expanded", "false");
+			document.body.classList.remove("nav-open");
+		});
+	});
+</script>

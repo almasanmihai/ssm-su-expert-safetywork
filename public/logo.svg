@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SSM & SU Expert SafetyWork">
+  <circle cx="32" cy="32" r="32" fill="#1a1614"/>
+  <path d="M18 38c0-5.5 4-10 9-10s9 4.5 9 10" fill="none" stroke="#FFDE59" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="27" cy="24" r="4" fill="#D7B532"/>
+  <path d="M36 40c0-4.2 3-7.5 6.8-7.5S49.5 35.8 49.5 40" fill="none" stroke="#A7DFFC" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="42.8" cy="28.5" r="3.2" fill="#A7DFFC"/>
+  <path d="M14 28l5 3 5-5 5 7 5-9" fill="none" stroke="#FFDE59" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46 18l4 4 7-8" fill="none" stroke="#D7B532" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

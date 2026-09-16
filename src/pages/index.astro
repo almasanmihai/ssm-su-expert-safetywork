@@ -1,0 +1,261 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+	title="Acasă"
+	description="Protejăm afacerea ta prin servicii complete de SSM și Situații de Urgență. Siguranță, conformitate și profesionalism."
+>
+	<section class="hero">
+		<div class="hero-bg" aria-hidden="true"></div>
+		<div class="container hero-content">
+			<p class="hero-brand">SSM &amp; SU Expert SafetyWork</p>
+			<h1>Siguranța unei afaceri bine protejate</h1>
+			<p class="hero-lead">
+				Servicii complete de SSM și Situații de Urgență — claritate, conformitate și prevenție pentru echipa
+				ta.
+			</p>
+			<div class="hero-actions">
+				<a class="btn btn-primary" href={`${base}contact`}>Solicită informații</a>
+				<a class="btn btn-secondary" href={`${base}servicii`}>Vezi serviciile</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-head reveal">
+				<span class="eyebrow">De ce noi</span>
+				<h2>Tu te concentrezi pe business. Noi pe SSM, SU și PSI.</h2>
+				<p>
+					Legislația se schimbă, cerințele se acumulează. Îți oferim experiență, documentație și proceduri
+					clare, ca totul să fie organizat și conform.
+				</p>
+			</div>
+
+			<ul class="value-list reveal">
+				<li>
+					<strong>Conformare legislativă</strong>
+					<span>Suport operațional pentru obligațiile de SSM și situații de urgență.</span>
+				</li>
+				<li>
+					<strong>Prevenție practică</strong>
+					<span>Evaluări, planuri și instruiri care reduc riscurile reale din teren.</span>
+				</li>
+				<li>
+					<strong>Răspuns pregătit</strong>
+					<span>Responsabilități, spații de adăpostire și proceduri cunoscute de personal.</span>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container band-inner reveal">
+			<div>
+				<span class="eyebrow light">Motto</span>
+				<h2>Expertiză. Prevenție. Responsabilitate.</h2>
+				<p>
+					Protejăm afacerea ta prin servicii complete de SSM și Situații de Urgență — cu seriozitate și
+					claritate.
+				</p>
+			</div>
+			<a class="btn btn-primary" href={`${base}despre`}>Despre noi</a>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container cta-block reveal">
+			<div>
+				<h2>Hai să lucrăm împreună</h2>
+				<p>Spune-ne ce ai nevoie — revenim cu informații și pașii următori.</p>
+			</div>
+			<a class="btn btn-outline" href={`${base}contact`}>Contactează-ne</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: calc(100svh - var(--header-h));
+		display: grid;
+		align-items: end;
+		overflow: hidden;
+		color: var(--color-white);
+	}
+
+	.hero-bg {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(105deg, rgba(26, 22, 20, 0.94) 0%, rgba(26, 22, 20, 0.78) 42%, rgba(26, 22, 20, 0.35) 70%),
+			linear-gradient(180deg, rgba(110, 58, 40, 0.25), transparent 40%),
+			radial-gradient(circle at 78% 35%, rgba(255, 222, 89, 0.55), transparent 42%),
+			radial-gradient(circle at 88% 70%, rgba(167, 223, 252, 0.4), transparent 38%),
+			linear-gradient(135deg, #2a211c 0%, #6e3a28 45%, #d7b532 100%);
+		animation: heroGlow 10s ease-in-out infinite alternate;
+	}
+
+	.hero-bg::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+		background-size: 48px 48px;
+		mask-image: linear-gradient(90deg, transparent, black 35%, black 100%);
+		opacity: 0.35;
+	}
+
+	@keyframes heroGlow {
+		from {
+			filter: saturate(1);
+		}
+		to {
+			filter: saturate(1.12) brightness(1.03);
+		}
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		padding: 5rem 0 4.5rem;
+		max-width: 42rem;
+		animation: heroIn 0.9s var(--ease) both;
+	}
+
+	@keyframes heroIn {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.hero-brand {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--color-yellow);
+		margin-bottom: 1rem;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.35rem, 6vw, 4rem);
+		margin-bottom: 1rem;
+		max-width: 14ch;
+	}
+
+	.hero-lead {
+		font-size: 1.1rem;
+		color: rgba(255, 255, 255, 0.86);
+		max-width: 36ch;
+		margin-bottom: 1.75rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.85rem;
+	}
+
+	.value-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.value-list li {
+		display: grid;
+		gap: 0.35rem;
+		padding-left: 1.25rem;
+		border-left: 3px solid var(--color-gold);
+	}
+
+	.value-list strong {
+		font-family: var(--font-display);
+		font-size: 1.2rem;
+		color: var(--color-ink);
+	}
+
+	.value-list span {
+		color: var(--color-muted);
+	}
+
+	.band {
+		background: linear-gradient(120deg, #1a1614 0%, #3d2a22 55%, #5a4028 100%);
+		color: var(--color-white);
+	}
+
+	.band .eyebrow.light {
+		color: var(--color-sky);
+	}
+
+	.band h2 {
+		color: var(--color-white);
+	}
+
+	.band p {
+		color: rgba(255, 255, 255, 0.78);
+		max-width: 40rem;
+	}
+
+	.band-inner {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.cta-block {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		padding: 2rem 0;
+		border-top: 1px solid rgba(110, 58, 40, 0.15);
+		border-bottom: 1px solid rgba(110, 58, 40, 0.15);
+	}
+
+	.cta-block h2 {
+		margin-bottom: 0.35rem;
+	}
+
+	.cta-block p {
+		color: var(--color-muted);
+		margin: 0;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-bg {
+			animation: none;
+		}
+
+		.hero-content {
+			animation: none;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.hero-content {
+			padding: 3.5rem 0 3rem;
+		}
+
+		.hero h1 {
+			max-width: none;
+		}
+	}
+</style>

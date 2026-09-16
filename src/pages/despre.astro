@@ -1,0 +1,136 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+	title="Despre"
+	description="SSM & SU Expert SafetyWork — expertiză, prevenție și responsabilitate în securitatea muncii și situațiile de urgență."
+>
+	<section class="page-hero">
+		<div class="container reveal">
+			<span class="eyebrow">Despre noi</span>
+			<h1>Expertiză. Prevenție. Responsabilitate.</h1>
+			<p>
+				Protejăm afacerea ta prin servicii complete de SSM și Situații de Urgență. Lucrăm cu seriozitate,
+				claritate și focus pe conformitate.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container prose reveal">
+			<h2>Misiunea noastră</h2>
+			<p>
+				Sprijinim companiile în identificarea riscurilor, stabilirea măsurilor de protecție și pregătirea
+				procedurilor necesare pentru gestionarea situațiilor de urgență. O alertă nu este momentul potrivit
+				pentru a decide cine, unde și ce trebuie să facă — pregătirea se face din timp.
+			</p>
+			<p>
+				Siguranța la locul de muncă nu ar trebui să fie complicată. Îți oferim experiența, resursele și
+				soluțiile necesare pentru ca lucrurile să fie clare, organizate și conforme cu legislația.
+			</p>
+		</div>
+	</section>
+
+	<section class="section accent">
+		<div class="container accent-grid reveal">
+			<div>
+				<span class="eyebrow">Abordare</span>
+				<h2>Partener, nu doar furnizor de documente</h2>
+				<p>
+					Ne uităm la realitatea operațională a firmei tale: spații, activități, oameni. Apoi construim
+					măsuri și proceduri care se pot aplica efectiv.
+				</p>
+			</div>
+			<ul>
+				<li>Documentație și instruiri SSM</li>
+				<li>Planuri SU / PSI și exerciții</li>
+				<li>Suport pentru conformare continuă</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container prose reveal">
+			<h2>În ecosistemul Fiscont</h2>
+			<p>
+				Colaborăm în cadrul unui ecosistem de servicii conexe, astfel încât clienții care au nevoie de SSM
+				sau Situații de Urgență să primească sprijin specializat, cu o identitate proprie și clară.
+			</p>
+			<a class="btn btn-outline" href={`${base}contact`}>Vorbește cu echipa</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding: 3.5rem 0 1rem;
+	}
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 4.5vw, 3rem);
+		max-width: 18ch;
+	}
+
+	.page-hero p {
+		max-width: 40rem;
+		color: var(--color-muted);
+		font-size: 1.08rem;
+	}
+
+	.prose {
+		max-width: 42rem;
+	}
+
+	.prose h2 {
+		font-size: clamp(1.5rem, 3vw, 2rem);
+	}
+
+	.prose p {
+		color: var(--color-ink-soft);
+		font-size: 1.05rem;
+	}
+
+	.accent {
+		background: linear-gradient(115deg, rgba(215, 181, 50, 0.16), rgba(167, 223, 252, 0.22));
+	}
+
+	.accent-grid {
+		display: grid;
+		grid-template-columns: 1.4fr 1fr;
+		gap: 2.5rem;
+		align-items: start;
+	}
+
+	.accent-grid h2 {
+		font-size: clamp(1.5rem, 3vw, 2.1rem);
+	}
+
+	.accent-grid p {
+		color: var(--color-ink-soft);
+	}
+
+	.accent-grid ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.accent-grid li {
+		padding-left: 1rem;
+		border-left: 3px solid var(--color-brown);
+		font-weight: 600;
+		color: var(--color-ink);
+	}
+
+	@media (max-width: 760px) {
+		.accent-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+	}
+</style>
