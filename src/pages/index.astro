@@ -9,7 +9,16 @@ const base = import.meta.env.BASE_URL;
 	description="Protejăm afacerea ta prin servicii complete de SSM și Situații de Urgență. Siguranță, conformitate și profesionalism."
 >
 	<section class="hero">
-		<div class="hero-bg" aria-hidden="true"></div>
+		<div class="hero-media" aria-hidden="true">
+			<img
+				src={`${base}images/hero-safety.jpg`}
+				alt=""
+				width="2000"
+				height="1333"
+				fetchpriority="high"
+			/>
+		</div>
+		<div class="hero-overlay" aria-hidden="true"></div>
 		<div class="container hero-content">
 			<p class="hero-brand">SSM &amp; SU Expert SafetyWork</p>
 			<h1>Siguranța unei afaceri bine protejate</h1>
@@ -87,36 +96,34 @@ const base = import.meta.env.BASE_URL;
 		color: var(--color-white);
 	}
 
-	.hero-bg {
+	.hero-media {
+		position: absolute;
+		inset: 0;
+	}
+
+	.hero-media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 35%;
+		transform: scale(1.02);
+		animation: heroDrift 18s var(--ease) infinite alternate;
+	}
+
+	.hero-overlay {
 		position: absolute;
 		inset: 0;
 		background:
-			linear-gradient(105deg, rgba(26, 22, 20, 0.94) 0%, rgba(26, 22, 20, 0.78) 42%, rgba(26, 22, 20, 0.35) 70%),
-			linear-gradient(180deg, rgba(110, 58, 40, 0.25), transparent 40%),
-			radial-gradient(circle at 78% 35%, rgba(255, 222, 89, 0.55), transparent 42%),
-			radial-gradient(circle at 88% 70%, rgba(167, 223, 252, 0.4), transparent 38%),
-			linear-gradient(135deg, #2a211c 0%, #6e3a28 45%, #d7b532 100%);
-		animation: heroGlow 10s ease-in-out infinite alternate;
+			linear-gradient(105deg, rgba(26, 22, 20, 0.88) 0%, rgba(26, 22, 20, 0.62) 48%, rgba(26, 22, 20, 0.28) 100%),
+			linear-gradient(180deg, rgba(26, 22, 20, 0.25) 0%, transparent 35%, rgba(26, 22, 20, 0.45) 100%);
 	}
 
-	.hero-bg::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background-image:
-			linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-		background-size: 48px 48px;
-		mask-image: linear-gradient(90deg, transparent, black 35%, black 100%);
-		opacity: 0.35;
-	}
-
-	@keyframes heroGlow {
+	@keyframes heroDrift {
 		from {
-			filter: saturate(1);
+			transform: scale(1.02) translate3d(0, 0, 0);
 		}
 		to {
-			filter: saturate(1.12) brightness(1.03);
+			transform: scale(1.08) translate3d(-1.5%, -1%, 0);
 		}
 	}
 
@@ -240,8 +247,9 @@ const base = import.meta.env.BASE_URL;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.hero-bg {
+		.hero-media img {
 			animation: none;
+			transform: none;
 		}
 
 		.hero-content {

@@ -43,7 +43,7 @@ git push
 - `/` — Acasă
 - `/servicii` — Servicii SSM / SU
 - `/despre` — Despre
-- `/contact` — Contact + formular (mailto)
+- `/contact` — Contact (telefoane + Facebook)
 
 ## Brand
 
