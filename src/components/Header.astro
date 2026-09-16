@@ -1,20 +1,20 @@
 ---
 const base = import.meta.env.BASE_URL;
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
-const baseClean = base.replace(/\/$/, "");
+const homePath = base.replace(/\/$/, "") || "/";
 
 const links = [
-	{ href: `${base}`, label: "Acasă", match: baseClean || "/" },
-	{ href: `${base}servicii`, label: "Servicii", match: `${baseClean}/servicii` },
-	{ href: `${base}despre`, label: "Despre", match: `${baseClean}/despre` },
-	{ href: `${base}contact`, label: "Contact", match: `${baseClean}/contact` },
+	{ href: base, label: "Acasă", match: homePath },
+	{ href: `${base}servicii/`, label: "Servicii", match: `${homePath}/servicii` },
+	{ href: `${base}despre/`, label: "Despre", match: `${homePath}/despre` },
+	{ href: `${base}contact/`, label: "Contact", match: `${homePath}/contact` },
 ];
 
 function isActive(match: string) {
-	if (match === baseClean || match === "/") {
-		return pathname === baseClean || pathname === "" || pathname === "/";
+	if (match === homePath || match === "/") {
+		return pathname === homePath || pathname === "" || pathname === "/";
 	}
-	return pathname === match || pathname.endsWith(match.replace(baseClean, ""));
+	return pathname === match;
 }
 ---
 
@@ -41,7 +41,7 @@ function isActive(match: string) {
 					</a>
 				))
 			}
-			<a class="btn btn-primary nav-cta" href={`${base}contact`}>Solicită informații</a>
+			<a class="btn btn-primary nav-cta" href={`${base}contact/`}>Solicită informații</a>
 		</nav>
 	</div>
 </header>

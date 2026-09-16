@@ -2,13 +2,11 @@
 
 Site static (Astro) pentru prezentarea serviciilor SSM / SU.
 
-## Preview live
-
-După primul push pe `main` și activarea GitHub Pages:
+## Preview live (share cu echipa)
 
 **https://almasanmihai.github.io/ssm-su-expert-safetywork/**
 
-(URL-ul final depinde de userul/organizația GitHub unde e repo-ul.)
+Repo: https://github.com/almasanmihai/ssm-su-expert-safetywork
 
 ## Local
 
@@ -19,18 +17,26 @@ npm run dev
 
 Deschide `http://localhost:4321/ssm-su-expert-safetywork/`.
 
-## Build
+> Pe Windows, folderul local conține `&` în nume — de aceea scripturile apelează Astro prin `node ./node_modules/astro/bin/astro.mjs`.
+
+## Build & deploy preview
 
 ```sh
 npm run build
-npm run preview
+npm run deploy
 ```
 
-## Deploy
+`npm run deploy` publică folderul `dist` pe branch-ul `gh-pages` (GitHub Pages), inclusiv fișierele dot (`.nojekyll`) necesare ca assets din `_astro` să fie servite.
 
-Fiecare push pe `main` pornește workflow-ul `.github/workflows/deploy.yml` și publică pe GitHub Pages.
+Opțional: există și `.github/workflows/deploy.yml` pentru deploy automat pe push. Pentru a-l activa pe remote, tokenul GitHub trebuie să aibă scope-ul `workflow` (`gh auth refresh -s workflow`), apoi:
 
-În Settings → Pages al repo-ului, sursa trebuie să fie **GitHub Actions**.
+```sh
+git add .github/workflows/deploy.yml
+git commit -m "Enable GitHub Actions Pages deploy"
+git push
+```
+
+În Settings → Pages, sursa poate rămâne branch `gh-pages` sau trece pe GitHub Actions.
 
 ## Structură
 
