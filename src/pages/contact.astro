@@ -17,7 +17,13 @@ const base = import.meta.env.BASE_URL;
 			"@type": "Organization",
 			name: "TCA SAFEWORK",
 			telephone: ["+40-762-682-850", "+40-763-693-715"],
-			email: "contact@expertsafetywork.ro",
+			email: "office@fiscontsrl.ro",
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3",
+				addressLocality: "București",
+				addressCountry: "RO",
+			},
 		},
 	}}
 >
@@ -45,6 +51,16 @@ const base = import.meta.env.BASE_URL;
 						<a href="tel:+40763693715">0763 693 715</a>
 					</li>
 					<li>
+						<span>Email</span>
+						<a href="mailto:office@fiscontsrl.ro">office@fiscontsrl.ro</a>
+					</li>
+					<li>
+						<span>Adresă</span>
+						<span class="contact-plain"
+							>Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3, București</span
+						>
+					</li>
+					<li>
 						<span>Facebook</span>
 						<a href="https://www.facebook.com/profile.php?id=61591444305432" target="_blank" rel="noopener noreferrer"
 							>TCA SAFEWORK</a
@@ -52,12 +68,12 @@ const base = import.meta.env.BASE_URL;
 					</li>
 				</ul>
 				<p class="note">
-					Pentru ofertă ne ajută: domeniul de activitate, numărul de angajați și locația. La control ITM,
-					suntem acolo.
+					Adresa și emailul sunt temporare (prin Fiscont), până avem datele proprii TCA SAFEWORK. Pentru
+					ofertă ne ajută: domeniul de activitate, numărul de angajați și locația.
 				</p>
 			</div>
 
-			<form class="contact-form reveal" id="formular" action={`mailto:contact@expertsafetywork.ro`} method="post" enctype="text/plain">
+			<form class="contact-form reveal" id="formular" action={`mailto:office@fiscontsrl.ro`} method="post" enctype="text/plain">
 				<h2>Formular ofertă</h2>
 				<p class="form-intro">
 					Completați formularul de mai jos și primiți oferta exactă în maximum 24 de ore.
@@ -154,6 +170,13 @@ const base = import.meta.env.BASE_URL;
 
 	.contact-list a:hover {
 		color: var(--color-brown);
+	}
+
+	.contact-plain {
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: var(--color-ink);
+		line-height: 1.45;
 	}
 
 	.note {
@@ -254,7 +277,7 @@ const base = import.meta.env.BASE_URL;
 			].join("\n"),
 		);
 
-		window.location.href = `mailto:contact@expertsafetywork.ro?subject=${subject}&body=${body}`;
+		window.location.href = `mailto:office@fiscontsrl.ro?subject=${subject}&body=${body}`;
 
 		if (status) {
 			status.hidden = false;
