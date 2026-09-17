@@ -61,11 +61,53 @@ const fineItems = [
 	"Neefectuarea instruirii lucrătorilor (art. 20) — amendă de la 4.000 la 8.000 lei",
 	"Angajarea fără examen medical de medicina muncii (art. 13 lit. j) — amendă de la 4.000 la 8.000 lei",
 ];
+
+const faqItems = [
+	{
+		question: "Este obligatoriu SSM-ul dacă am un singur angajat?",
+		answer:
+			"Da. Art. 6 alin. (1) din Legea nr. 319/2006 obligă angajatorul să asigure securitatea și sănătatea lucrătorilor în toate aspectele legate de muncă — de la primul lucrător angajat, indiferent de domeniul de activitate. Diferă doar modul de organizare, stabilit prin Normele de aplicare (HG nr. 1425/2006): lucrător desemnat, serviciu intern sau serviciu extern de prevenire și protecție abilitat.",
+	},
+	{
+		question: "Ce amenzi risc dacă nu am documentația SSM?",
+		answer:
+			"Sancțiunile sunt prevăzute la art. 39 din Legea nr. 319/2006. Cele mai frecvente: lipsa evaluării riscurilor (4.000–8.000 lei), lipsa planului de prevenire și protecție (5.000–10.000 lei), neefectuarea instruirii (4.000–8.000 lei), angajarea fără examen de medicina muncii (4.000–8.000 lei). Amenzile se cumulează. Un abonament lunar costă o fracțiune din cea mai mică amendă.",
+	},
+	{
+		question: "Cât durează până am toate documentele?",
+		answer:
+			"Pentru o firmă tipică până în 50 de angajați, documentația completă cerută de art. 12 din Legea nr. 319/2006 și art. 15 din HG nr. 1425/2006 — evaluarea riscurilor, planul de prevenire și protecție, instrucțiunile proprii (IPSSM), tematicile de instruire — este gata în maxim 3 zile lucrătoare de la semnarea contractului și transmiterea informațiilor despre activitate.",
+	},
+	{
+		question: "Lucrați și cu firme din afara Bucureștiului?",
+		answer:
+			"Da — avem acoperire națională. În București și județele învecinate deplasarea este inclusă în abonament, pentru restul țării folosim platforma proprie de instruire online cu semnătură electronică, cu aceeași valoare legală ca instruirea clasică, plus rețeaua de colaboratori pentru intervențiile la fața locului. Indiferent de județ, documentația și asistența la control sunt aceleași.",
+	},
+	{
+		question: "Ce se întâmplă când vine un control ITM?",
+		answer:
+			"Ne anunțați, iar noi pregătim dosarul și participăm la control alături de dumneavoastră — inspectorii verifică exact documentația și instruirile pe care le ținem noi la zi. Consultanța pentru îndeplinirea măsurilor dispuse este inclusă în abonament.",
+	},
+];
+
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqItems.map((item) => ({
+		"@type": "Question",
+		name: item.question,
+		acceptedAnswer: {
+			"@type": "Answer",
+			text: item.answer,
+		},
+	})),
+};
 ---
 
 <BaseLayout
-	title="Servicii"
-	description="Serviciu extern SSM abilitat ITM București, PSI / situații de urgență și consultanță protecție civilă — abonament lunar complet."
+	title="Servicii SSM, PSI și situații de urgență"
+	description="Abonament lunar SSM + PSI: documentație completă, instruiri, avize ISU, consultanță protecție civilă și reprezentare la control ITM."
+	jsonLd={faqSchema}
 >
 	<section class="page-hero">
 		<div class="container reveal">
@@ -183,66 +225,42 @@ const fineItems = [
 				<h2>Întrebări frecvente despre serviciile SSM și PSI</h2>
 			</div>
 			<div class="faq-list">
-				<details class="faq reveal">
-					<summary>1. Este obligatoriu SSM-ul dacă am un singur angajat?</summary>
-					<p>
-						Da. Art. 6 alin. (1) din Legea nr. 319/2006 obligă angajatorul să asigure securitatea și
-						sănătatea lucrătorilor în toate aspectele legate de muncă — de la primul lucrător angajat,
-						indiferent de domeniul de activitate. Diferă doar modul de organizare, stabilit prin Normele de
-						aplicare (HG nr. 1425/2006): lucrător desemnat, serviciu intern sau serviciu extern de prevenire
-						și protecție abilitat.
-					</p>
-				</details>
-
-				<details class="faq reveal">
-					<summary>2. Ce amenzi risc dacă nu am documentația SSM?</summary>
-					<p>
-						Sancțiunile sunt prevăzute la art. 39 din Legea nr. 319/2006, iar cele mai frecvente constatări
-						la control sunt:
-					</p>
-					<ul class="check-list faq-fines">
-						{fineItems.map((item) => <li>{item}</li>)}
-					</ul>
-					<p>
-						Amenzile se aplică pentru fiecare neconformitate în parte și se cumulează — un singur control
-						poate constata trei-patru deodată. Un abonament lunar costă o fracțiune din cea mai mică amendă.
-					</p>
-				</details>
-
-				<details class="faq reveal">
-					<summary>3. Cât durează până am toate documentele?</summary>
-					<p>
-						Pentru o firmă tipică până în 50 de angajați, documentația completă cerută de art. 12 din Legea
-						nr. 319/2006 și art. 15 din HG nr. 1425/2006 — evaluarea riscurilor, planul de prevenire și
-						protecție, instrucțiunile proprii (IPSSM), tematicile de instruire — este gata în maxim 3 zile
-						lucrătoare de la semnarea contractului și transmiterea informațiilor despre activitate.
-					</p>
-				</details>
-
-				<details class="faq reveal">
-					<summary>4. Lucrați și cu firme din afara Bucureștiului?</summary>
-					<p>
-						Da — avem acoperire națională. În București și județele învecinate deplasarea este inclusă în
-						abonament, pentru restul țării folosim platforma proprie de instruire online cu semnătură
-						electronică, cu aceeași valoare legală ca instruirea clasică, plus rețeaua de colaboratori
-						pentru intervențiile la fața locului. Indiferent de județ, documentația și asistența la control
-						sunt aceleași.
-					</p>
-				</details>
-
-				<details class="faq reveal">
-					<summary>5. Ce se întâmplă când vine un control ITM?</summary>
-					<p>
-						Ne anunțați, iar noi pregătim dosarul și participăm la control alături de dumneavoastră —
-						inspectorii verifică exact documentația și instruirile pe care le ținem noi la zi. Consultanța
-						pentru îndeplinirea măsurilor dispuse este inclusă în abonament.
-					</p>
-					<p>
-						<a class="link-form" href={`${base}contact/#formular`}>
-							Completați formularul de mai jos și primiți oferta exactă în maximum 24 de ore.
-						</a>
-					</p>
-				</details>
+				{
+					faqItems.map((item, index) => (
+						<details class="faq reveal">
+							<summary>
+								{index + 1}. {item.question}
+							</summary>
+							{index === 1 ? (
+								<>
+									<p>
+										Sancțiunile sunt prevăzute la art. 39 din Legea nr. 319/2006, iar cele mai
+										frecvente constatări la control sunt:
+									</p>
+									<ul class="check-list faq-fines">
+										{fineItems.map((fine) => (
+											<li>{fine}</li>
+										))}
+									</ul>
+									<p>
+										Amenzile se aplică pentru fiecare neconformitate în parte și se cumulează — un
+										singur control poate constata trei-patru deodată. Un abonament lunar costă o
+										fracțiune din cea mai mică amendă.
+									</p>
+								</>
+							) : (
+								<p>{item.answer}</p>
+							)}
+							{index === faqItems.length - 1 && (
+								<p>
+									<a class="link-form" href={`${base}contact/#formular`}>
+										Completați formularul de mai jos și primiți oferta exactă în maximum 24 de ore.
+									</a>
+								</p>
+							)}
+						</details>
+					))
+				}
 			</div>
 		</div>
 	</section>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://almasanmihai.github.io/ssm-su-expert-safetywork/sitemap-index.xml

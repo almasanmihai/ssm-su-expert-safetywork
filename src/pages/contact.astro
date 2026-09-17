@@ -5,8 +5,21 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
-	title="Contact"
-	description="Solicită oferta TCA SAFEWORK pentru SSM și PSI / SU. Răspuns în maximum 24 de ore."
+	title="Contact — solicită oferta SSM și PSI"
+	description="Contact TCA SAFEWORK: ofertă SSM și PSI / SU în maximum 24 de ore. Telefon 0762 682 850 / 0763 693 715."
+	jsonLd={{
+		"@context": "https://schema.org",
+		"@type": "ContactPage",
+		name: "Contact TCA SAFEWORK",
+		description: "Solicită oferta pentru serviciu extern SSM și PSI / situații de urgență.",
+		url: Astro.url.href,
+		mainEntity: {
+			"@type": "Organization",
+			name: "TCA SAFEWORK",
+			telephone: ["+40-762-682-850", "+40-763-693-715"],
+			email: "contact@expertsafetywork.ro",
+		},
+	}}
 >
 	<section class="page-hero">
 		<div class="container reveal">

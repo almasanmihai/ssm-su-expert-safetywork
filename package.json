@@ -13,6 +13,7 @@
     "deploy": "node ./node_modules/astro/bin/astro.mjs build && npx gh-pages -d dist -b gh-pages --dotfiles -m \"Deploy site preview\""
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.2"
   },
   "allowScripts": {
