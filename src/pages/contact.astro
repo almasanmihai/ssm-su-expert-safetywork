@@ -4,13 +4,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
 	title="Contact"
-	description="Contactează SSM & SU Expert SafetyWork pentru servicii SSM și Situații de Urgență."
+	description="Solicită oferta Expert SafetyWork pentru SSM și PSI / SU. Răspuns în maximum 24 de ore."
 >
 	<section class="page-hero">
 		<div class="container reveal">
 			<span class="eyebrow">Contact</span>
-			<h1>Hai să vorbim</h1>
-			<p>Ne găsești telefonic sau pe Facebook. Revenim rapid cu informații și pașii următori.</p>
+			<h1>Solicită oferta</h1>
+			<p>
+				Ne sunați și spuneți-ne câți angajați aveți. În maximum 24 de ore primiți oferta exactă, fără
+				obligații.
+			</p>
 		</div>
 	</section>
 
@@ -32,6 +35,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					>
 				</li>
 			</ul>
+			<p class="hint">
+				Pentru ofertă ne ajută: domeniul de activitate, numărul de angajați și locația. La control ITM, suntem
+				acolo.
+			</p>
 		</div>
 	</section>
 </BaseLayout>
@@ -46,18 +53,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	}
 
 	.page-hero p {
-		max-width: 36rem;
+		max-width: 38rem;
 		color: var(--color-muted);
 		font-size: 1.08rem;
 	}
 
 	.contact-panel {
-		max-width: 36rem;
+		max-width: 38rem;
 	}
 
 	.contact-list {
 		list-style: none;
-		margin: 0;
+		margin: 0 0 1.5rem;
 		padding: 0;
 		display: grid;
 		gap: 1.35rem;
@@ -92,5 +99,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 	.contact-list a:hover {
 		color: var(--color-brown);
+	}
+
+	.hint {
+		color: var(--color-muted);
+		font-size: 0.98rem;
+		margin: 0;
+		padding-top: 0.5rem;
 	}
 </style>

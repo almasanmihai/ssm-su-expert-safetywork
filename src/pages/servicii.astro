@@ -3,80 +3,157 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const base = import.meta.env.BASE_URL;
 
-const services = [
+const ssmItems = [
+	"Întocmire documentație completă SSM",
+	"Reprezentare în caz de control",
+	"Consultanță privind Legea 319/2006 și normele de aplicare",
+	"Identificarea și evaluarea riscurilor de accidentare și îmbolnăvire profesională pe posturi de lucru",
+	"Dosar PSI complet și plan de evacuare",
+	"Documentație în domeniul situațiilor de urgență (Legile nr. 307/2006 și 481/2004)",
+	"Evidența controalelor de medicina muncii",
+	"Elaborarea planului de prevenire și protecție",
+	"Întocmirea fișelor individuale de instructaj în domeniul securității și sănătății în muncă",
+	"Elaborare de instrucțiuni proprii pentru acordarea primului ajutor în caz de accidentare",
+];
+
+const suItems = [
+	"Servicii complete în domeniul situațiilor de urgență",
+	"Obținere autorizație de securitate la incendiu ISU",
+	"Obținere aviz de securitate la incendiu",
+	"Hotărârea atribuțiilor în domeniul apărării împotriva incendiilor",
+	"Organizare autoapărare împotriva incendiilor",
+	"Elaborare măsuri tehnico-organizatorice pentru evacuare, salvare, protecție bunuri și stingere incendii",
+	"Elaborare instrucțiuni în caz de incendiu sau cutremur",
+	"Dotare societate cu stingătoare",
+	"Întocmire fișe de instruire și proceduri pe categorii de personal",
+	"Efectuare instructaje specifice pe categorii de personal",
+	"Întocmire plan de analiză și acoperire a riscurilor",
+	"Întocmire registre specifice prevenire și stingere incendii",
+	"Listă puncte vulnerabile și zone cu risc ridicat",
+	"Organizare de simulări de evacuare și intervenție",
+];
+
+const pcItems = [
+	"Pregătirea salariaților",
+	"Pregătirea serviciilor voluntare sau private pentru situații de urgență",
+	"Pregătirea personalului cu funcții de conducere și de specialitate",
+	"Coordonarea planificării activităților de protecție civilă",
+	"Consiliere pentru conducerea instituției",
+	"Organizare și monitorizare măsuri de protecție civilă",
+	"Planuri de desfășurare a exercițiilor și aplicațiilor",
+];
+
+const faqs = [
 	{
-		title: "Securitate și sănătate în muncă",
-		text: "Evaluarea riscurilor, instruirea angajaților și documentația necesară pentru un sistem SSM clar și actualizat.",
+		q: "Este obligatoriu SSM-ul dacă am un singur angajat?",
+		a: "Da. Art. 6 alin. (1) din Legea nr. 319/2006 obligă angajatorul să asigure securitatea și sănătatea lucrătorilor în toate aspectele legate de muncă — de la primul lucrător angajat, indiferent de domeniul de activitate. Diferă doar modul de organizare, stabilit prin Normele de aplicare (HG nr. 1425/2006): lucrător desemnat, serviciu intern sau serviciu extern de prevenire și protecție abilitat.",
 	},
 	{
-		title: "Situații de urgență",
-		text: "Pregătire operațională: responsabilități, proceduri, spații de adăpostire și măsuri de protecție pentru personal.",
+		q: "Ce amenzi risc dacă nu am documentația SSM?",
+		a: "Sancțiunile sunt prevăzute la art. 39 din Legea nr. 319/2006. Cele mai frecvente: lipsa evaluării riscurilor (4.000–8.000 lei), lipsa planului de prevenire și protecție (5.000–10.000 lei), neefectuarea instruirii (4.000–8.000 lei), angajare fără examen medical (4.000–8.000 lei). Amenzile se cumulează pe neconformități. Un abonament lunar costă o fracțiune din cea mai mică amendă.",
 	},
 	{
-		title: "Audit și evaluare de risc",
-		text: "Identificăm riscurile reale din activitate și propunem măsuri concrete de reducere și control.",
+		q: "Cât durează până am toate documentele?",
+		a: "Pentru o firmă tipică până în 50 de angajați, documentația completă cerută de art. 12 din Legea nr. 319/2006 și art. 15 din HG nr. 1425/2006 — evaluarea riscurilor, planul de prevenire și protecție, instrucțiunile proprii (IPSSM), tematicile de instruire — este gata în maxim 3 zile lucrătoare de la semnarea contractului și transmiterea informațiilor despre activitate.",
 	},
 	{
-		title: "Planuri de intervenție",
-		text: "Planuri și proceduri adaptate spațiului, activității și modului de lucru al companiei tale.",
+		q: "Lucrați și cu firme din afara Bucureștiului?",
+		a: "Da — avem acoperire națională. În București și județele învecinate deplasarea este inclusă în abonament; pentru restul țării folosim platforma proprie de instruire online cu semnătură electronică (aceeași valoare legală ca instruirea clasică), plus rețeaua de colaboratori pentru intervențiile la fața locului.",
 	},
 	{
-		title: "Formare personal și coordonare SU",
-		text: "Instruiri, exerciții și coordonare pentru ca echipa să știe ce are de făcut când apare o alertă.",
-	},
-	{
-		title: "Conformare legislativă și suport operațional",
-		text: "Te sprijinim să rămâi aliniat cerințelor legale, fără să pierzi focusul pe activitatea de bază.",
+		q: "Ce se întâmplă când vine un control ITM?",
+		a: "Ne anunțați, iar noi pregătim dosarul și participăm la control alături de dumneavoastră. Inspectorii verifică exact documentația și instruirile pe care le ținem noi la zi. Consultanța pentru îndeplinirea măsurilor dispuse este inclusă în abonament.",
 	},
 ];
 ---
 
 <BaseLayout
 	title="Servicii"
-	description="Servicii externe SSM / SU: evaluare de risc, planuri de intervenție, formare personal și conformare legislativă."
+	description="Serviciu extern SSM abilitat ITM București, PSI / situații de urgență și consultanță protecție civilă — abonament lunar complet."
 >
 	<section class="page-hero">
 		<div class="container reveal">
 			<span class="eyebrow">Servicii</span>
-			<h1>Servicii externe SSM / SU</h1>
+			<h1>Serviciu extern SSM și PSI / SU</h1>
 			<p>
-				Soluții practice pentru protecția angajaților și reducerea riscurilor operaționale — de la documentație
-				la pregătire în situații de urgență.
+				Abonament lunar complet — SSM + PSI (situații de urgență), instruiri și asistență de specialitate. Un
+				singur contract, un singur om de contact.
 			</p>
 		</div>
 	</section>
 
 	<section class="section">
 		<div class="container">
-			<ol class="service-list">
-				{
-					services.map((service, index) => (
-						<li class="reveal" style={`transition-delay: ${index * 60}ms`}>
-							<span class="idx">{String(index + 1).padStart(2, "0")}</span>
-							<div>
-								<h2>{service.title}</h2>
-								<p>{service.text}</p>
-							</div>
-						</li>
-					))
-				}
-			</ol>
+			<div class="block reveal">
+				<span class="eyebrow">SSM</span>
+				<h2>Securitate și sănătate în muncă</h2>
+				<p class="lead">
+					Serviciu extern SSM abilitat de către I.T.M. București — documentație, consultanță și reprezentare la
+					control.
+				</p>
+				<ul class="check-list">
+					{ssmItems.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+
+			<div class="block reveal">
+				<span class="eyebrow">SU / PSI</span>
+				<h2>Situații de urgență și apărare împotriva incendiilor</h2>
+				<p class="lead">
+					Apărarea împotriva incendiilor este activitate de interes public, național, cu caracter permanent.
+					Societățile comerciale sunt obligate prin lege să aibă în dotare mijloace de intervenție (stingătoare,
+					hidranți, pichete P.S.I. etc.) și documentație conform Legii 307/2006.
+				</p>
+				<ul class="check-list">
+					{suItems.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+
+			<div class="block reveal">
+				<span class="eyebrow">Protecție civilă</span>
+				<h2>Consultanță protecție civilă</h2>
+				<p class="lead">
+					Conform Legii nr. 481/2004 — prevenire și reducere a riscurilor de dezastre, protecția persoanelor,
+					bunurilor și mediului. Operatorii economici răspund de aplicarea măsurilor stabilite prin lege și
+					planurile proprii.
+				</p>
+				<ul class="check-list">
+					{pcItems.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section pricing">
+		<div class="container split reveal">
+			<div>
+				<span class="eyebrow">Tarife orientative</span>
+				<h2>Taxă unică de preluare: 900 lei</h2>
+				<p>
+					Se achită o singură dată, indiferent de numărul de salariați — pentru întocmirea documentației
+					complete SSM și PSI la preluare. Apoi abonament lunar pentru SSM + PSI, instruiri și consultanță.
+				</p>
+			</div>
+			<a class="btn btn-primary" href={`${base}contact/`}>Cere oferta exactă</a>
 		</div>
 	</section>
 
 	<section class="section">
-		<div class="container split reveal">
-			<div>
-				<span class="eyebrow">SSM + SU &amp; PSI</span>
-				<h2>Clar, organizat, conform</h2>
-				<p>
-					<strong>SSM:</strong> evaluarea riscurilor, instruirea angajaților și documentație.
-				</p>
-				<p>
-					<strong>SU &amp; PSI:</strong> planuri, instruiri, exerciții și măsuri de prevenție.
-				</p>
+		<div class="container">
+			<div class="section-head reveal">
+				<span class="eyebrow">FAQ</span>
+				<h2>Întrebări frecvente despre serviciile SSM și PSI</h2>
 			</div>
-			<a class="btn btn-primary" href={`${base}contact/`}>Solicită informații</a>
+			<div class="faq-list">
+				{
+					faqs.map((item) => (
+						<details class="faq reveal">
+							<summary>{item.q}</summary>
+							<p>{item.a}</p>
+						</details>
+					))
+				}
+			</div>
 		</div>
 	</section>
 </BaseLayout>
@@ -88,52 +165,63 @@ const services = [
 
 	.page-hero h1 {
 		font-size: clamp(2rem, 4.5vw, 3rem);
-		max-width: 16ch;
+		max-width: 18ch;
 	}
 
 	.page-hero p {
-		max-width: 40rem;
+		max-width: 42rem;
 		color: var(--color-muted);
 		font-size: 1.08rem;
 	}
 
-	.service-list {
+	.block {
+		padding: 2.25rem 0;
+		border-top: 1px solid rgba(110, 58, 40, 0.12);
+	}
+
+	.block:last-child {
+		border-bottom: 1px solid rgba(110, 58, 40, 0.12);
+	}
+
+	.block h2 {
+		font-size: clamp(1.45rem, 3vw, 1.9rem);
+		margin-bottom: 0.75rem;
+	}
+
+	.lead {
+		color: var(--color-ink-soft);
+		max-width: 48rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.check-list {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		display: grid;
-		gap: 0;
+		gap: 0.65rem;
+		max-width: 52rem;
 	}
 
-	.service-list li {
-		display: grid;
-		grid-template-columns: 4rem 1fr;
-		gap: 1rem;
-		padding: 1.6rem 0;
-		border-top: 1px solid rgba(110, 58, 40, 0.12);
+	.check-list li {
+		position: relative;
+		padding-left: 1.35rem;
+		color: var(--color-ink-soft);
 	}
 
-	.service-list li:last-child {
-		border-bottom: 1px solid rgba(110, 58, 40, 0.12);
+	.check-list li::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0.55rem;
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 50%;
+		background: var(--color-gold);
 	}
 
-	.idx {
-		font-family: var(--font-display);
-		font-weight: 800;
-		font-size: 1.25rem;
-		color: var(--color-gold);
-		line-height: 1.2;
-	}
-
-	.service-list h2 {
-		font-size: 1.25rem;
-		margin-bottom: 0.4rem;
-	}
-
-	.service-list p {
-		margin: 0;
-		color: var(--color-muted);
-		max-width: 46rem;
+	.pricing {
+		padding-top: 1rem;
 	}
 
 	.split {
@@ -148,16 +236,53 @@ const services = [
 	}
 
 	.split h2 {
-		font-size: clamp(1.6rem, 3vw, 2.1rem);
+		font-size: clamp(1.5rem, 3vw, 2rem);
 	}
 
 	.split p {
 		color: var(--color-ink-soft);
+		max-width: 40rem;
+		margin: 0;
 	}
 
-	@media (max-width: 560px) {
-		.service-list li {
-			grid-template-columns: 3rem 1fr;
-		}
+	.faq-list {
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.faq {
+		border: 1px solid rgba(110, 58, 40, 0.12);
+		background: rgba(255, 255, 255, 0.45);
+		padding: 0.25rem 1rem;
+	}
+
+	.faq summary {
+		cursor: pointer;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1.05rem;
+		padding: 0.95rem 0;
+		list-style: none;
+	}
+
+	.faq summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq summary::after {
+		content: "+";
+		float: right;
+		color: var(--color-brown);
+		font-weight: 800;
+	}
+
+	.faq[open] summary::after {
+		content: "–";
+	}
+
+	.faq p {
+		margin: 0 0 1rem;
+		color: var(--color-muted);
+		max-width: 52rem;
 	}
 </style>

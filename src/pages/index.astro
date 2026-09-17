@@ -2,11 +2,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const base = import.meta.env.BASE_URL;
+
+const highlights = [
+	"Întocmire documentație completă SSM",
+	"Reprezentare în caz de control",
+	"Dosar PSI complet și plan de evacuare",
+	"Documentație situații de urgență (Legea 307/2006 și 481/2004)",
+	"Evaluarea riscurilor pe posturi de lucru",
+	"Instruiri și asistență de specialitate",
+];
 ---
 
 <BaseLayout
 	title="Acasă"
-	description="Protejăm afacerea ta prin servicii complete de SSM și Situații de Urgență. Siguranță, conformitate și profesionalism."
+	description="Serviciu extern SSM (abilitat ITM București) și PSI / SU — un singur abonament, un singur contract, un singur om de contact."
 >
 	<section class="hero">
 		<div class="hero-media" aria-hidden="true">
@@ -21,13 +30,13 @@ const base = import.meta.env.BASE_URL;
 		<div class="hero-overlay" aria-hidden="true"></div>
 		<div class="container hero-content">
 			<p class="hero-brand">SSM &amp; SU Expert SafetyWork</p>
-			<h1>Siguranța unei afaceri bine protejate</h1>
+			<h1>Un singur furnizor pentru SSM, PSI / SU</h1>
 			<p class="hero-lead">
-				Servicii complete de SSM și Situații de Urgență — claritate, conformitate și prevenție pentru echipa
-				ta.
+				Serviciu extern SSM (abilitat de către I.T.M. București) și PSI. Un singur abonament, un singur
+				contract, un singur om de contact — iar documentele nu se contrazic între ele la control.
 			</p>
 			<div class="hero-actions">
-				<a class="btn btn-primary" href={`${base}contact/`}>Solicită informații</a>
+				<a class="btn btn-primary" href={`${base}contact/`}>Solicită oferta</a>
 				<a class="btn btn-secondary" href={`${base}servicii/`}>Vezi serviciile</a>
 			</div>
 		</div>
@@ -36,27 +45,22 @@ const base = import.meta.env.BASE_URL;
 	<section class="section">
 		<div class="container">
 			<div class="section-head reveal">
-				<span class="eyebrow">De ce noi</span>
-				<h2>Tu te concentrezi pe business. Noi pe SSM, SU și PSI.</h2>
+				<span class="eyebrow">De ce un singur partener</span>
+				<h2>Nu mai jonglați cu doi-trei furnizori</h2>
 				<p>
-					Legislația se schimbă, cerințele se acumulează. Îți oferim experiență, documentație și proceduri
-					clare, ca totul să fie organizat și conform.
+					Majoritatea firmelor lucrează cu unul pentru SSM și altul pentru PSI / SU. La Expert SafetyWork
+					primiți totul într-un singur abonament — clar, organizat și pregătit pentru control.
 				</p>
 			</div>
 
 			<ul class="value-list reveal">
-				<li>
-					<strong>Conformare legislativă</strong>
-					<span>Suport operațional pentru obligațiile de SSM și situații de urgență.</span>
-				</li>
-				<li>
-					<strong>Prevenție practică</strong>
-					<span>Evaluări, planuri și instruiri care reduc riscurile reale din teren.</span>
-				</li>
-				<li>
-					<strong>Răspuns pregătit</strong>
-					<span>Responsabilități, spații de adăpostire și proceduri cunoscute de personal.</span>
-				</li>
+				{
+					highlights.map((item) => (
+						<li>
+							<strong>{item}</strong>
+						</li>
+					))
+				}
 			</ul>
 		</div>
 	</section>
@@ -64,22 +68,68 @@ const base = import.meta.env.BASE_URL;
 	<section class="section band">
 		<div class="container band-inner reveal">
 			<div>
-				<span class="eyebrow light">Motto</span>
-				<h2>Expertiză. Prevenție. Responsabilitate.</h2>
+				<span class="eyebrow light">Preluare</span>
+				<h2>Taxă unică de 900 lei</h2>
 				<p>
-					Protejăm afacerea ta prin servicii complete de SSM și Situații de Urgență — cu seriozitate și
-					claritate.
+					Întocmirea documentației complete SSM și PSI la preluare se achită o singură dată, indiferent de
+					numărul de salariați. Apoi, abonament lunar complet — SSM + PSI (situații de urgență), instruiri și
+					asistență.
 				</p>
 			</div>
-			<a class="btn btn-primary" href={`${base}despre/`}>Despre noi</a>
+			<a class="btn btn-primary" href={`${base}contact/`}>Întreabă-ne</a>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container reveal">
+			<div class="section-head">
+				<span class="eyebrow">Cost</span>
+				<h2>De ce externalizarea SSM costă mai puțin decât un angajat intern</h2>
+				<p>
+					Un lucrător desemnat intern înseamnă salariu, cursuri de specializare și răspundere concentrată pe
+					un singur om — care poate pleca oricând. Externalizarea către o firmă de servicii SSM abilitată
+					înseamnă o echipă întreagă de specialiști, la o fracțiune din cost, cu răspundere contractuală și
+					continuitate garantată. Pentru firmele cu până la 50 de angajați, externalizarea SSM și PSI este
+					soluția standard din practică.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section steps-section">
+		<div class="container">
+			<div class="section-head reveal">
+				<span class="eyebrow">Colaborare</span>
+				<h2>Cum începem — 3 pași</h2>
+			</div>
+			<ol class="steps reveal">
+				<li>
+					<strong>Ne spuneți câți angajați aveți</strong>
+					<span>Ne sunați. În maximum 24 de ore primiți oferta exactă, fără obligații.</span>
+				</li>
+				<li>
+					<strong>Preluăm tot ce există</strong>
+					<span
+						>Analizăm documentația existentă, identificăm ce lipsește și elaborăm tot ce cere legislația
+						pentru activitatea dumneavoastră.</span
+					>
+				</li>
+				<li>
+					<strong>Firma e acoperită permanent</strong>
+					<span
+						>Instruiri la termen, documente actualizate la orice modificare legislativă. La control, suntem
+						acolo!</span
+					>
+				</li>
+			</ol>
 		</div>
 	</section>
 
 	<section class="section">
 		<div class="container cta-block reveal">
 			<div>
-				<h2>Hai să lucrăm împreună</h2>
-				<p>Spune-ne ce ai nevoie — revenim cu informații și pașii următori.</p>
+				<h2>Completați datele sau ne sunați</h2>
+				<p>În maximum 24 de ore primiți oferta exactă, fără obligații.</p>
 			</div>
 			<a class="btn btn-outline" href={`${base}contact/`}>Contactează-ne</a>
 		</div>
@@ -131,7 +181,7 @@ const base = import.meta.env.BASE_URL;
 		position: relative;
 		z-index: 1;
 		padding: 5rem 0 4.5rem;
-		max-width: 42rem;
+		max-width: 44rem;
 		animation: heroIn 0.9s var(--ease) both;
 	}
 
@@ -157,15 +207,15 @@ const base = import.meta.env.BASE_URL;
 	}
 
 	.hero h1 {
-		font-size: clamp(2.35rem, 6vw, 4rem);
+		font-size: clamp(2.1rem, 5.2vw, 3.6rem);
 		margin-bottom: 1rem;
-		max-width: 14ch;
+		max-width: 16ch;
 	}
 
 	.hero-lead {
-		font-size: 1.1rem;
+		font-size: 1.08rem;
 		color: rgba(255, 255, 255, 0.86);
-		max-width: 36ch;
+		max-width: 42ch;
 		margin-bottom: 1.75rem;
 	}
 
@@ -180,24 +230,20 @@ const base = import.meta.env.BASE_URL;
 		margin: 0;
 		padding: 0;
 		display: grid;
-		gap: 1.5rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem 2rem;
 	}
 
 	.value-list li {
-		display: grid;
-		gap: 0.35rem;
 		padding-left: 1.25rem;
 		border-left: 3px solid var(--color-gold);
 	}
 
 	.value-list strong {
 		font-family: var(--font-display);
-		font-size: 1.2rem;
+		font-size: 1.05rem;
+		font-weight: 700;
 		color: var(--color-ink);
-	}
-
-	.value-list span {
-		color: var(--color-muted);
 	}
 
 	.band {
@@ -215,7 +261,7 @@ const base = import.meta.env.BASE_URL;
 
 	.band p {
 		color: rgba(255, 255, 255, 0.78);
-		max-width: 40rem;
+		max-width: 42rem;
 	}
 
 	.band-inner {
@@ -224,6 +270,48 @@ const base = import.meta.env.BASE_URL;
 		justify-content: space-between;
 		gap: 2rem;
 		flex-wrap: wrap;
+	}
+
+	.steps {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 1.5rem;
+		counter-reset: step;
+	}
+
+	.steps li {
+		display: grid;
+		gap: 0.35rem;
+		padding-left: 3.5rem;
+		position: relative;
+		counter-increment: step;
+	}
+
+	.steps li::before {
+		content: counter(step);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 50%;
+		display: grid;
+		place-items: center;
+		background: var(--color-gold);
+		color: var(--color-ink);
+		font-family: var(--font-display);
+		font-weight: 800;
+	}
+
+	.steps strong {
+		font-family: var(--font-display);
+		font-size: 1.15rem;
+	}
+
+	.steps span {
+		color: var(--color-muted);
 	}
 
 	.cta-block {
@@ -254,6 +342,12 @@ const base = import.meta.env.BASE_URL;
 
 		.hero-content {
 			animation: none;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.value-list {
+			grid-template-columns: 1fr;
 		}
 	}
 
