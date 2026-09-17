@@ -63,6 +63,7 @@ const faqs = [
 	{
 		q: "Ce se întâmplă când vine un control ITM?",
 		a: "Ne anunțați, iar noi pregătim dosarul și participăm la control alături de dumneavoastră. Inspectorii verifică exact documentația și instruirile pe care le ținem noi la zi. Consultanța pentru îndeplinirea măsurilor dispuse este inclusă în abonament.",
+		cta: true,
 	},
 ];
 ---
@@ -134,7 +135,7 @@ const faqs = [
 					complete SSM și PSI la preluare. Apoi abonament lunar pentru SSM + PSI, instruiri și consultanță.
 				</p>
 			</div>
-			<a class="btn btn-primary" href={`${base}contact/`}>Cere oferta exactă</a>
+			<a class="btn btn-primary" href={`${base}contact/#formular`}>Cere oferta exactă</a>
 		</div>
 	</section>
 
@@ -150,6 +151,13 @@ const faqs = [
 						<details class="faq reveal">
 							<summary>{item.q}</summary>
 							<p>{item.a}</p>
+							{"cta" in item && item.cta ? (
+								<p>
+									<a class="link-form" href={`${base}contact/#formular`}>
+										Completați formularul de mai jos și primiți oferta exactă în maximum 24 de ore.
+									</a>
+								</p>
+							) : null}
 						</details>
 					))
 				}

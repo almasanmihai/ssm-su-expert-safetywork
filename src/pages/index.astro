@@ -36,7 +36,7 @@ const highlights = [
 				contract, un singur om de contact — iar documentele nu se contrazic între ele la control.
 			</p>
 			<div class="hero-actions">
-				<a class="btn btn-primary" href={`${base}contact/`}>Solicită oferta</a>
+				<a class="btn btn-primary" href={`${base}contact/#formular`}>Solicită oferta</a>
 				<a class="btn btn-secondary" href={`${base}servicii/`}>Vezi serviciile</a>
 			</div>
 		</div>
@@ -105,7 +105,12 @@ const highlights = [
 			<ol class="steps reveal">
 				<li>
 					<strong>Ne spuneți câți angajați aveți</strong>
-					<span>Ne sunați. În maximum 24 de ore primiți oferta exactă, fără obligații.</span>
+					<span>
+						<a class="link-form" href={`${base}contact/#formular`}
+							>Completați formularul</a
+						>{" "}
+						sau ne sunați. În maximum 24 de ore primiți oferta exactă, fără obligații.
+					</span>
 				</li>
 				<li>
 					<strong>Preluăm tot ce există</strong>
@@ -128,10 +133,14 @@ const highlights = [
 	<section class="section">
 		<div class="container cta-block reveal">
 			<div>
-				<h2>Completați datele sau ne sunați</h2>
-				<p>În maximum 24 de ore primiți oferta exactă, fără obligații.</p>
+				<h2>Hai să începem</h2>
+				<p>
+					<a class="link-form" href={`${base}contact/#formular`}
+						>Completați formularul de mai jos și primiți oferta exactă în maximum 24 de ore.</a
+					>
+				</p>
 			</div>
-			<a class="btn btn-outline" href={`${base}contact/`}>Contactează-ne</a>
+			<a class="btn btn-outline" href={`${base}contact/#formular`}>Deschide formularul</a>
 		</div>
 	</section>
 </BaseLayout>

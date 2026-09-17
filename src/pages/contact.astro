@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
@@ -11,34 +13,73 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			<span class="eyebrow">Contact</span>
 			<h1>Solicită oferta</h1>
 			<p>
-				Ne sunați și spuneți-ne câți angajați aveți. În maximum 24 de ore primiți oferta exactă, fără
-				obligații.
+				Completați formularul sau ne sunați. În maximum 24 de ore primiți oferta exactă, fără obligații.
 			</p>
 		</div>
 	</section>
 
 	<section class="section">
-		<div class="container contact-panel reveal">
-			<ul class="contact-list">
-				<li>
-					<span>Telefon</span>
-					<a href="tel:+40762682850">0762 682 850</a>
-				</li>
-				<li>
-					<span>Telefon</span>
-					<a href="tel:+40763693715">0763 693 715</a>
-				</li>
-				<li>
-					<span>Facebook</span>
-					<a href="https://www.facebook.com/profile.php?id=61591444305432" target="_blank" rel="noopener noreferrer"
-						>SSM &amp; SU Expert SafetyWork</a
-					>
-				</li>
-			</ul>
-			<p class="hint">
-				Pentru ofertă ne ajută: domeniul de activitate, numărul de angajați și locația. La control ITM, suntem
-				acolo.
-			</p>
+		<div class="container contact-grid">
+			<div class="reveal">
+				<h2>Date de contact</h2>
+				<ul class="contact-list">
+					<li>
+						<span>Telefon</span>
+						<a href="tel:+40762682850">0762 682 850</a>
+					</li>
+					<li>
+						<span>Telefon</span>
+						<a href="tel:+40763693715">0763 693 715</a>
+					</li>
+					<li>
+						<span>Facebook</span>
+						<a href="https://www.facebook.com/profile.php?id=61591444305432" target="_blank" rel="noopener noreferrer"
+							>SSM &amp; SU Expert SafetyWork</a
+						>
+					</li>
+				</ul>
+				<p class="note">
+					Pentru ofertă ne ajută: domeniul de activitate, numărul de angajați și locația. La control ITM,
+					suntem acolo.
+				</p>
+			</div>
+
+			<form class="contact-form reveal" id="formular" action={`mailto:contact@expertsafetywork.ro`} method="post" enctype="text/plain">
+				<h2>Formular ofertă</h2>
+				<p class="form-intro">
+					Completați formularul de mai jos și primiți oferta exactă în maximum 24 de ore.
+				</p>
+				<label>
+					Nume și prenume
+					<input type="text" name="nume" required autocomplete="name" placeholder="Nume Prenume" />
+				</label>
+				<label>
+					Telefon
+					<input type="tel" name="telefon" required autocomplete="tel" placeholder="07xx xxx xxx" />
+				</label>
+				<label>
+					Email
+					<input type="email" name="email" required autocomplete="email" placeholder="email@firma.ro" />
+				</label>
+				<label>
+					Domeniu de activitate
+					<input type="text" name="domeniu" required placeholder="Ex: construcții, comerț, producție" />
+				</label>
+				<label>
+					Număr de angajați
+					<input type="number" name="angajati" required min="1" placeholder="Ex: 12" />
+				</label>
+				<label>
+					Locația
+					<input type="text" name="locatie" required autocomplete="address-level2" placeholder="Oraș / județ" />
+				</label>
+				<label>
+					Mesaj
+					<textarea name="mesaj" rows="4" placeholder="Alte detalii utile (opțional)"></textarea>
+				</label>
+				<button class="btn btn-primary" type="submit">Trimite solicitarea</button>
+				<p class="form-status" id="form-status" hidden></p>
+			</form>
 		</div>
 	</section>
 </BaseLayout>
@@ -58,28 +99,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		font-size: 1.08rem;
 	}
 
-	.contact-panel {
-		max-width: 38rem;
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 1fr 1.15fr;
+		gap: 3rem;
+		align-items: start;
+	}
+
+	.contact-grid h2 {
+		font-size: 1.45rem;
+		margin-bottom: 1rem;
 	}
 
 	.contact-list {
 		list-style: none;
-		margin: 0 0 1.5rem;
+		margin: 0 0 1.25rem;
 		padding: 0;
 		display: grid;
-		gap: 1.35rem;
+		gap: 1rem;
 	}
 
 	.contact-list li {
 		display: grid;
-		gap: 0.25rem;
-		padding-bottom: 1.25rem;
-		border-bottom: 1px solid rgba(110, 58, 40, 0.12);
-	}
-
-	.contact-list li:last-child {
-		border-bottom: 0;
-		padding-bottom: 0;
+		gap: 0.2rem;
 	}
 
 	.contact-list span {
@@ -91,7 +133,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	}
 
 	.contact-list a {
-		font-size: 1.25rem;
+		font-size: 1.15rem;
 		font-weight: 700;
 		text-decoration: none;
 		color: var(--color-ink);
@@ -101,10 +143,109 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		color: var(--color-brown);
 	}
 
-	.hint {
+	.note {
 		color: var(--color-muted);
-		font-size: 0.98rem;
+		font-size: 0.95rem;
+	}
+
+	.contact-form {
+		display: grid;
+		gap: 0.9rem;
+		padding: 1.5rem;
+		scroll-margin-top: calc(var(--header-h) + 1rem);
+		background: rgba(255, 255, 255, 0.55);
+		border: 1px solid rgba(110, 58, 40, 0.1);
+		box-shadow: var(--shadow-soft);
+	}
+
+	.form-intro {
+		margin: -0.25rem 0 0.35rem;
+		color: var(--color-muted);
+		font-size: 0.95rem;
+	}
+
+	.contact-form label {
+		display: grid;
+		gap: 0.35rem;
+		font-weight: 600;
+		font-size: 0.9rem;
+		color: var(--color-ink-soft);
+	}
+
+	.contact-form input,
+	.contact-form textarea {
+		width: 100%;
+		padding: 0.75rem 0.85rem;
+		border: 1px solid rgba(110, 58, 40, 0.18);
+		border-radius: var(--radius);
+		background: var(--color-white);
+		font: inherit;
+		color: var(--color-ink);
+	}
+
+	.contact-form input:focus,
+	.contact-form textarea:focus {
+		outline: 2px solid var(--color-sky);
+		border-color: transparent;
+	}
+
+	.contact-form .btn {
+		justify-self: start;
+		margin-top: 0.25rem;
+	}
+
+	.form-status {
 		margin: 0;
-		padding-top: 0.5rem;
+		font-size: 0.92rem;
+		color: var(--color-brown);
+		font-weight: 600;
+	}
+
+	@media (max-width: 800px) {
+		.contact-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
 	}
 </style>
+
+<script>
+	const form = document.getElementById("formular") as HTMLFormElement | null;
+	const status = document.getElementById("form-status");
+
+	form?.addEventListener("submit", (event) => {
+		event.preventDefault();
+		const data = new FormData(form);
+		const nume = String(data.get("nume") || "").trim();
+		const telefon = String(data.get("telefon") || "").trim();
+		const email = String(data.get("email") || "").trim();
+		const domeniu = String(data.get("domeniu") || "").trim();
+		const angajati = String(data.get("angajati") || "").trim();
+		const locatie = String(data.get("locatie") || "").trim();
+		const mesaj = String(data.get("mesaj") || "").trim();
+
+		const subject = encodeURIComponent(`Solicitare ofertă SSM/PSI — ${nume}`);
+		const body = encodeURIComponent(
+			[
+				`Nume: ${nume}`,
+				`Telefon: ${telefon}`,
+				`Email: ${email}`,
+				`Domeniu de activitate: ${domeniu}`,
+				`Număr de angajați: ${angajati}`,
+				`Locația: ${locatie}`,
+				"",
+				"Mesaj:",
+				mesaj || "(fără mesaj)",
+				"",
+				"— Trimis de pe site-ul Expert SafetyWork",
+			].join("\n"),
+		);
+
+		window.location.href = `mailto:contact@expertsafetywork.ro?subject=${subject}&body=${body}`;
+
+		if (status) {
+			status.hidden = false;
+			status.textContent = "Se deschide clientul de e-mail. Poți trimite și sunând la numerele din stânga.";
+		}
+	});
+</script>

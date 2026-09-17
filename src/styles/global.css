@@ -2,7 +2,7 @@
 	--color-gold: #d7b532;
 	--color-sky: #a7dffc;
 	--color-yellow: #ffde59;
-	--color-brown: #6e3a28;
+	--color-link-cta: #ff0000;
 	--color-ink: #1a1614;
 	--color-ink-soft: #3d342f;
 	--color-muted: #6b635c;
@@ -133,6 +133,17 @@ p:last-child {
 .btn-outline:hover {
 	background: var(--color-brown);
 	color: var(--color-white);
+}
+
+.link-form {
+	color: var(--color-link-cta);
+	font-weight: 700;
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+
+.link-form:hover {
+	color: #cc0000;
 }
 
 .section {
