@@ -6,16 +6,20 @@ const base = import.meta.env.BASE_URL;
 const highlights = [
 	"Întocmire documentație completă SSM",
 	"Reprezentare în caz de control",
+	"Consultanță privind Legea 319/2006 și normele de aplicare",
+	"Identificarea și evaluarea riscurilor de accidentare și îmbolnăvire profesională pe posturi de lucru",
 	"Dosar PSI complet și plan de evacuare",
-	"Documentație situații de urgență (Legea 307/2006 și 481/2004)",
-	"Evaluarea riscurilor pe posturi de lucru",
-	"Instruiri și asistență de specialitate",
+	"Documentație în domeniul situațiilor de urgență (legile nr. 307/2006 și 481/2004)",
+	"Evidența controalelor de medicina muncii",
+	"Elaborarea planului de prevenire și protecție",
+	"Întocmirea fișelor individuale de instructaj SSM",
+	"Instrucțiuni proprii pentru primul ajutor în caz de accidentare",
 ];
 ---
 
 <BaseLayout
 	title="Acasă"
-	description="Serviciu extern SSM (abilitat ITM București) și PSI / SU — un singur abonament, un singur contract, un singur om de contact."
+	description="Serviciu extern SSM (abilitat de către I.T.M. București) și PSI — un singur furnizor pentru SSM, PSI / SU."
 >
 	<section class="hero">
 		<div class="hero-media" aria-hidden="true">
@@ -46,10 +50,11 @@ const highlights = [
 		<div class="container">
 			<div class="section-head reveal">
 				<span class="eyebrow">De ce un singur partener</span>
-				<h2>Nu mai jonglați cu doi-trei furnizori</h2>
+				<h2>Un singur furnizor pentru SSM, PSI / SU</h2>
 				<p>
-					Majoritatea firmelor lucrează cu unul pentru SSM și altul pentru PSI / SU. La TCA SAFEWORK
-					primiți totul într-un singur abonament — clar, organizat și pregătit pentru control.
+					Majoritatea firmelor jonglează cu doi-trei furnizori: unul pentru SSM, altul pentru PSI și SU. La
+					TCA SAFEWORK primiți totul într-un singur abonament, cu un singur contract și un singur om de contact
+					— iar documentele nu se contrazic între ele la control.
 				</p>
 			</div>
 
@@ -71,12 +76,12 @@ const highlights = [
 				<span class="eyebrow light">Preluare</span>
 				<h2>Taxă unică de 900 lei</h2>
 				<p>
-					Întocmirea documentației complete SSM și PSI la preluare se achită o singură dată, indiferent de
-					numărul de salariați. Apoi, abonament lunar complet — SSM + PSI (situații de urgență), instruiri și
-					asistență.
+					Întocmirea documentației complete SSM și PSI la preluare: taxă unică de 900 lei — se achită o
+					singură dată, indiferent de numărul de salariați. Abonament lunar complet — SSM + PSI (situații de
+					urgență), instruiri și asistență (consultanță de specialitate).
 				</p>
 			</div>
-			<a class="btn btn-primary" href={`${base}contact/`}>Întreabă-ne</a>
+			<a class="btn btn-primary" href={`${base}contact/#formular`}>Întreabă-ne</a>
 		</div>
 	</section>
 
@@ -115,8 +120,8 @@ const highlights = [
 				<li>
 					<strong>Preluăm tot ce există</strong>
 					<span
-						>Analizăm documentația existentă, identificăm ce lipsește și elaborăm tot ce cere legislația
-						pentru activitatea dumneavoastră.</span
+						>Analizăm documentația existentă, identificăm ce lipsește și elaborăm tot ce ne solicită
+						legislația pentru activitatea dumneavoastră.</span
 					>
 				</li>
 				<li>
