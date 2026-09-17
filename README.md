@@ -1,6 +1,6 @@
-# SSM & SU Expert SafetyWork — site de prezentare
+# TCA SAFEWORK — site de prezentare
 
-Site static (Astro) pentru prezentarea serviciilor SSM / SU.
+Site static (Astro) pentru prezentarea serviciilor SSM / SU (TCA SAFEWORK).
 
 ## Preview live (share cu echipa)
 
