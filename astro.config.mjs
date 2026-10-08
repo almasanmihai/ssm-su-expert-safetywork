@@ -2,10 +2,8 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// GitHub Pages project site: https://<user>.github.io/<repo>/
 export default defineConfig({
-	site: 'https://almasanmihai.github.io',
-	base: '/ssm-su-expert-safetywork/',
+	site: 'https://tcasafework.ro',
 	integrations: [
 		sitemap({
 			changefreq: 'monthly',
@@ -19,7 +17,7 @@ export default defineConfig({
 			},
 			serialize(item) {
 				const url = item.url;
-				if (url.endsWith('/ssm-su-expert-safetywork/') || url.endsWith('/ssm-su-expert-safetywork')) {
+				if (url === 'https://tcasafework.ro/' || url === 'https://tcasafework.ro') {
 					item.priority = 1.0;
 					item.changefreq = 'weekly';
 				} else if (url.includes('/servicii')) {

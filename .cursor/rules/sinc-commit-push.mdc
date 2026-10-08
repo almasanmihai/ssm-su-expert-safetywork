@@ -1,0 +1,22 @@
+---
+description: Când utilizatorul spune „sinc”, fă commit și push pe GitHub
+alwaysApply: true
+---
+
+# Sincronizare GitHub („sinc”)
+
+Când utilizatorul spune **sinc** (inclusiv „sinc”, „sinc acum”, „fă sinc”), înseamnă: commit la modificările curente și push pe GitHub, ca repo-ul local și remote să fie sincronizate.
+
+## Pași
+
+1. Urmează protocolul de commit din regulile de git (status, diff, log, mesaj, `git add`, commit).
+2. Apoi fă `git push` către branch-ul curent (cu `-u` dacă branch-ul nu are upstream).
+3. Confirmă în română: commit-ul, mesajul și că push-ul a reușit (URL sau branch).
+
+## Limite
+
+- Nu face commit gol dacă nu există modificări.
+- Nu folosi `--force`, `--no-verify` sau amend decât dacă utilizatorul cere explicit.
+- Nu include fișiere cu secrete (`.env`, credențiale).
+- Nu include niciodată folderul `div fisiere/` (documente locale). Rămâne doar pe disc, chiar dacă are fișiere noi sau modificate.
+- „sinc” este cererea explicită de commit **și** push. Nu aștepta o a doua confirmare.

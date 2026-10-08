@@ -13,8 +13,8 @@ const base = import.meta.env.BASE_URL;
 			<span class="eyebrow">Despre noi</span>
 			<h1>Serviciu extern SSM abilitat ITM București</h1>
 			<p>
-				Un singur partener pentru SSM, PSI și situații de urgență — cu răspundere contractuală, continuitate
-				și documente pregătite pentru control.
+				Un singur partener pentru SSM, PSI și Situații de Urgență - cu răspundere contractuală, continuitate
+				și documentație impecabilă la orice control.
 			</p>
 		</div>
 	</section>
@@ -23,14 +23,11 @@ const base = import.meta.env.BASE_URL;
 		<div class="container prose reveal">
 			<h2>Ce facem</h2>
 			<p>
-				Majoritatea firmelor jonglează cu doi-trei furnizori: unul pentru SSM, altul pentru PSI și SU. La
-				TCA SAFEWORK primiți totul într-un singur abonament, cu un singur contract și un singur om de
-				contact — iar documentele nu se contrazic între ele la control.
-			</p>
-			<p>
-				Externalizarea către o firmă de servicii SSM abilitată înseamnă o echipă întreagă de specialiști, la o
-				fracțiune din costul unui angajat intern, cu răspundere contractuală și continuitate garantată. Pentru
-				firmele cu până la 50 de angajați, externalizarea SSM și PSI este soluția standard din practică.
+				În loc să gestionezi mai mulți furnizori diferiți pentru SSM și PSI, la TCA SAFEWORK ai totul
+				integrat: un singur contract, un singur abonament și un singur specialist dedicat. Astfel, elimini
+				riscul ca documentele să se contrazică între ele și ai garanția că ești acoperit din toate unghiurile.
+				Beneficiezi de o echipă întreagă de experți la o fracțiune din costul unui angajat intern - soluția
+				optimă, simplă și eficientă pentru firmele cu până la 50 de angajați.
 			</p>
 		</div>
 	</section>
@@ -42,8 +39,8 @@ const base = import.meta.env.BASE_URL;
 				<h2>București, județe învecinate și național</h2>
 				<p>
 					În București și județele învecinate deplasarea este inclusă în abonament. Pentru restul țării
-					folosim platforma proprie de instruire online cu semnătură electronică — aceeași valoare legală ca
-					instruirea clasică — plus rețeaua de colaboratori pentru intervențiile la fața locului.
+					folosim platforma proprie de instruire online cu semnătură electronică - aceeași valoare legală ca
+					instruirea clasică, plus rețeaua de colaboratori pentru intervențiile la fața locului.
 				</p>
 			</div>
 			<ul>
@@ -54,8 +51,9 @@ const base = import.meta.env.BASE_URL;
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="container prose reveal">
+	<section class="section fiscont">
+		<div class="container fiscont-inner reveal">
+			<span class="eyebrow">Parteneriat</span>
 			<h2>În ecosistemul Fiscont</h2>
 			<p>
 				Colaborăm în cadrul unui ecosistem de servicii conexe, astfel încât clienții care au nevoie de SSM sau
@@ -93,6 +91,42 @@ const base = import.meta.env.BASE_URL;
 	.prose p {
 		color: var(--color-ink-soft);
 		font-size: 1.05rem;
+	}
+
+	.fiscont {
+		background: linear-gradient(120deg, #1a1614 0%, #3d2a22 55%, #5a4028 100%);
+		color: var(--color-white);
+	}
+
+	.fiscont-inner {
+		max-width: 42rem;
+	}
+
+	.fiscont .eyebrow {
+		color: var(--color-sky);
+	}
+
+	.fiscont h2 {
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		color: var(--color-white);
+		margin-bottom: 0.85rem;
+	}
+
+	.fiscont p {
+		color: rgba(255, 255, 255, 0.82);
+		font-size: 1.12rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.fiscont .btn-outline {
+		border-color: rgba(255, 255, 255, 0.55);
+		color: var(--color-white);
+	}
+
+	.fiscont .btn-outline:hover {
+		background: var(--color-yellow);
+		border-color: var(--color-yellow);
+		color: var(--color-ink);
 	}
 
 	.accent {
