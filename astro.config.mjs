@@ -3,7 +3,9 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-	site: 'https://tcasafework.ro',
+	// Project site on GitHub Pages: https://almasanmihai.github.io/ssm-su-expert-safetywork/
+	site: 'https://almasanmihai.github.io',
+	base: '/ssm-su-expert-safetywork/',
 	integrations: [
 		sitemap({
 			changefreq: 'monthly',
@@ -17,7 +19,7 @@ export default defineConfig({
 			},
 			serialize(item) {
 				const url = item.url;
-				if (url === 'https://tcasafework.ro/' || url === 'https://tcasafework.ro') {
+				if (url.endsWith('/ssm-su-expert-safetywork/') || url.endsWith('/ssm-su-expert-safetywork')) {
 					item.priority = 1.0;
 					item.changefreq = 'weekly';
 				} else if (url.includes('/servicii')) {
