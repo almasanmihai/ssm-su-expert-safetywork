@@ -25,7 +25,7 @@ const fullTitle = absoluteTitle ? title : `${title} | ${siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const base = import.meta.env.BASE_URL;
 const ogImage = new URL(image.replace(/^\//, ""), new URL(base, Astro.site));
-const ogImageAlt = "TCA SAFEWORK — servicii SSM și PSI / situații de urgență";
+const ogImageAlt = "TCA SAFEWORK — specialiști SSM pe șantier, PSI și situații de urgență";
 const orgDescription =
 	"Serviciu extern SSM abilitat ITM București și PSI / situații de urgență. Un singur abonament pentru documentație, instruiri și asistență la control.";
 

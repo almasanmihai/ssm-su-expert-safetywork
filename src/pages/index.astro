@@ -23,13 +23,17 @@ const highlights = [
 >
 	<section class="hero">
 		<div class="hero-media">
-			<img
-				src={`${base}images/hero-safety.jpg`}
-				alt="Specialist TCA SAFEWORK — securitate și sănătate în muncă, PSI și situații de urgență"
-				width="2000"
-				height="1333"
-				fetchpriority="high"
-			/>
+			<picture>
+				<source srcset={`${base}images/hero-safety.webp`} type="image/webp" />
+				<img
+					src={`${base}images/hero-safety.jpg`}
+					alt="Consultanți SSM pe șantier — verificare documentație de securitate și sănătate în muncă"
+					width="1672"
+					height="941"
+					fetchpriority="high"
+					decoding="async"
+				/>
+			</picture>
 		</div>
 		<div class="hero-overlay" aria-hidden="true"></div>
 		<div class="container hero-content">
@@ -168,11 +172,16 @@ const highlights = [
 		inset: 0;
 	}
 
+	.hero-media picture,
 	.hero-media img {
 		width: 100%;
 		height: 100%;
+		display: block;
+	}
+
+	.hero-media img {
 		object-fit: cover;
-		object-position: center 35%;
+		object-position: 72% center;
 		transform: scale(1.02);
 		animation: heroDrift 18s var(--ease) infinite alternate;
 	}
