@@ -1,15 +1,31 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { breadcrumbSchema } from "../lib/seo";
 
 const base = import.meta.env.BASE_URL;
+const siteUrl = new URL(base, Astro.site);
 ---
 
 <BaseLayout
-	title="Despre TCA SAFEWORK — SSM abilitat ITM"
-	description="TCA SAFEWORK: serviciu extern SSM abilitat ITM București, PSI / SU, acoperire națională și asistență la control."
+	title="Despre noi — SSM abilitat ITM București"
+	description="TCA SAFEWORK este serviciu extern SSM abilitat ITM București, cu PSI / SU, acoperire națională, instruiri și asistență la control."
+	jsonLd={[
+		{
+			"@context": "https://schema.org",
+			"@type": "AboutPage",
+			name: "Despre TCA SAFEWORK",
+			url: new URL("despre/", siteUrl).href,
+		},
+		breadcrumbSchema([
+			{ name: "Acasă", url: siteUrl.href },
+			{ name: "Despre", url: new URL("despre/", siteUrl).href },
+		]),
+	]}
 >
 	<section class="page-hero">
 		<div class="container reveal">
+			<Breadcrumbs items={[{ label: "Despre" }]} />
 			<span class="eyebrow">Despre noi</span>
 			<h1>Serviciu extern SSM abilitat ITM București</h1>
 			<p>

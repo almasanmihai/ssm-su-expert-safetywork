@@ -1,0 +1,24 @@
+{
+	"name": "TCA SAFEWORK",
+	"short_name": "SAFEWORK",
+	"description": "Serviciu extern SSM abilitat ITM București și PSI / situații de urgență.",
+	"lang": "ro",
+	"start_url": "/",
+	"scope": "/",
+	"display": "browser",
+	"background_color": "#f7f5f2",
+	"theme_color": "#1a1614",
+	"icons": [
+		{
+			"src": "/logo-64.png",
+			"sizes": "64x64",
+			"type": "image/png"
+		},
+		{
+			"src": "/logo.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	]
+}

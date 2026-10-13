@@ -17,6 +17,10 @@ pnpm-debug.log*
 .env
 .env.production
 
+# credențiale SMTP Hostico — nu intra în git
+config.php
+**/tcasafework-config/
+
 # macOS-specific files
 .DS_Store
 

@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+name: Build Hostico
 
 on:
   push:
@@ -22,11 +22,14 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Publish to gh-pages
+      - name: Add cPanel deploy file
+        run: cp .cpanel.yml dist/.cpanel.yml
+
+      - name: Publish built site to hostico branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: gh-pages
+          publish_branch: hostico
           force_orphan: true
-          commit_message: Deploy site preview
+          commit_message: Build site for Hostico

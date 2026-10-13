@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { breadcrumbSchema } from "../lib/seo";
+
+const base = import.meta.env.BASE_URL;
+const siteUrl = new URL(base, Astro.site);
+---
+
+<BaseLayout
+	title="Politica de confidențialitate"
+	description="Cum prelucrează TCA SAFEWORK datele personale transmise prin formularul de contact și prin email."
+	jsonLd={breadcrumbSchema([
+		{ name: "Acasă", url: siteUrl.href },
+		{ name: "Confidențialitate", url: new URL("confidentialitate/", siteUrl).href },
+	])}
+>
+	<section class="page-hero">
+		<div class="container reveal">
+			<Breadcrumbs items={[{ label: "Confidențialitate" }]} />
+			<span class="eyebrow">GDPR</span>
+			<h1>Politica de confidențialitate</h1>
+			<p>Cum folosim datele pe care ni le trimiteți prin formular sau prin email.</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container prose reveal">
+			<h2>Operatorul de date</h2>
+			<p>
+				Datele sunt prelucrate de TCA SAFEWORK, cu sediul în Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3,
+				București, email <a href="mailto:office@tcasafework.ro">office@tcasafework.ro</a>, telefon 0762 682 850
+				/ 0763 693 715.
+			</p>
+
+			<h2>Ce date colectăm</h2>
+			<p>
+				Prin formularul de contact: nume și prenume, telefon, email, domeniu de activitate, număr de angajați,
+				locație și mesajul opțional. Puteți să ne scrieți și direct la office@tcasafework.ro.
+			</p>
+
+			<h2>Scop și temei</h2>
+			<p>
+				Folosim datele ca să răspundem solicitării de ofertă și să începem o eventuală colaborare. Temeiul este
+				art. 6 alin. (1) lit. b) și f) din GDPR (pași precontractuali și interes legitim de a răspunde
+				solicitării), plus consimțământul bifat în formular.
+			</p>
+
+			<h2>Cât păstrăm datele</h2>
+			<p>
+				Mesajele de ofertă se păstrează până la 12 luni de la ultima comunicare, sau atât cât impune legea dacă
+				devine contract. Nu vindem datele și nu le folosim pentru newslettere fără acord separat.
+			</p>
+
+			<h2>Cine are acces</h2>
+			<p>
+				Echipa TCA SAFEWORK și, dacă e cazul, furnizorul de găzduire / email (Hostico), care prelucrează datele
+				doar pentru a livra serviciul. Site-ul încarcă fonturile Manrope și Syne de la Google Fonts; Google
+				poate prelucra adresa IP a vizitatorului pentru livrarea fișierelor. Datele din formular nu sunt
+				transferate în afara SEE în mod intenționat.
+			</p>
+
+			<h2>Drepturile dvs.</h2>
+			<p>
+				Aveți dreptul de acces, rectificare, ștergere, restricționare, opoziție și portabilitate, precum și
+				dreptul de a depune plângere la ANSPDCP. Pentru cereri scrieți la
+				<a href="mailto:office@tcasafework.ro">office@tcasafework.ro</a>.
+			</p>
+
+			<p>
+				<a class="btn btn-outline" href={`${base}contact/`}>Înapoi la contact</a>
+			</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding: 3.5rem 0 1rem;
+	}
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 4.5vw, 3rem);
+		max-width: 16ch;
+	}
+
+	.page-hero p {
+		max-width: 40rem;
+		color: var(--color-muted);
+		font-size: 1.08rem;
+	}
+
+	.prose {
+		max-width: 42rem;
+	}
+
+	.prose h2 {
+		font-size: clamp(1.35rem, 3vw, 1.75rem);
+		margin-top: 1.75rem;
+	}
+
+	.prose p {
+		color: var(--color-ink-soft);
+		font-size: 1.05rem;
+	}
+
+	.prose a:not(.btn) {
+		color: var(--color-brown);
+		font-weight: 700;
+	}
+
+	.prose .btn {
+		margin-top: 0.5rem;
+	}
+</style>

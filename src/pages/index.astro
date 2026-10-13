@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const base = import.meta.env.BASE_URL;
+const siteUrl = new URL(base, Astro.site);
 
 const highlights = [
 	"Întocmire documentație completă SSM",
@@ -18,8 +19,20 @@ const highlights = [
 ---
 
 <BaseLayout
-	title="Servicii SSM și PSI / SU — abonament complet"
+	title="Serviciu extern SSM și PSI București"
 	description="Serviciu extern SSM abilitat ITM București și PSI / situații de urgență. Un singur contract, documentație la zi și asistență la control."
+	preloadImage={`${base}images/hero-safety.webp`}
+	jsonLd={{
+		"@context": "https://schema.org",
+		"@type": "Offer",
+		name: "Preluare documentație SSM și PSI",
+		description:
+			"Taxă unică de 900 lei pentru întocmirea documentației complete SSM și PSI la preluare, indiferent de numărul de salariați.",
+		price: "900",
+		priceCurrency: "RON",
+		availability: "https://schema.org/InStock",
+		url: new URL("contact/", siteUrl).href,
+	}}
 >
 	<section class="hero">
 		<div class="hero-media">
@@ -30,6 +43,7 @@ const highlights = [
 					alt="Consultanți SSM pe șantier — verificare documentație de securitate și sănătate în muncă"
 					width="1672"
 					height="941"
+					sizes="100vw"
 					fetchpriority="high"
 					decoding="async"
 				/>
@@ -101,7 +115,8 @@ const highlights = [
 					un singur om - care poate pleca oricând. Externalizarea către o firmă de servicii SSM abilitată îți
 					oferă acces la o echipă întreagă de specialiști, cu un cost optimizat față de un post intern,
 					răspundere contractuală și continuitate în serviciu. Pentru firmele cu până la 50 de angajați,
-					externalizarea SSM și PSI/SU poate fi o soluție eficientă și practică.
+					externalizarea SSM și PSI/SU poate fi o soluție eficientă și practică. Află mai multe
+					<a class="text-link" href={`${base}despre/`}>despre TCA SAFEWORK</a>.
 				</p>
 			</div>
 		</div>

@@ -10,46 +10,61 @@ interface Props {
 	/** If true, `title` is used as-is (no brand suffix). */
 	absoluteTitle?: boolean;
 	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+	robots?: string;
+	preloadImage?: string;
+	canonicalPath?: string;
 }
 
 const {
 	title,
 	description = "Serviciu extern SSM abilitat ITM București și PSI / situații de urgență. Un singur abonament pentru documentație, instruiri și asistență la control.",
-	image = "images/hero-safety.jpg",
+	image = "images/og-cover.jpg",
 	absoluteTitle = false,
 	jsonLd,
+	robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+	preloadImage,
+	canonicalPath,
 } = Astro.props;
 
 const siteName = "TCA SAFEWORK";
 const fullTitle = absoluteTitle ? title : `${title} | ${siteName}`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
+const siteUrl = new URL(import.meta.env.BASE_URL, Astro.site);
 const base = import.meta.env.BASE_URL;
-const ogImage = new URL(image.replace(/^\//, ""), new URL(base, Astro.site));
-const ogImageAlt = "TCA SAFEWORK — specialiști SSM pe șantier, PSI și situații de urgență";
+const ogImage = new URL(image.replace(/^\//, ""), siteUrl);
+const ogImageAlt = "TCA SAFEWORK — serviciu extern SSM și PSI / situații de urgență";
 const orgDescription =
 	"Serviciu extern SSM abilitat ITM București și PSI / situații de urgență. Un singur abonament pentru documentație, instruiri și asistență la control.";
+const serviciiUrl = new URL("servicii/", siteUrl).href;
 
 const organizationSchema = {
 	"@context": "https://schema.org",
 	"@type": "ProfessionalService",
+	"@id": new URL("#organizatie", siteUrl).href,
 	name: siteName,
-	alternateName: "SSM & SU Expert SafetyWork",
-	url: new URL(base, Astro.site).href,
-	logo: new URL("logo.png", new URL(base, Astro.site)).href,
+	alternateName: ["SSM & SU Expert SafetyWork", "TCA Safe Work"],
+	url: siteUrl.href,
+	logo: {
+		"@type": "ImageObject",
+		url: new URL("logo.png", siteUrl).href,
+		width: 512,
+		height: 512,
+	},
 	image: ogImage.href,
 	description: orgDescription,
 	telephone: ["+40-762-682-850", "+40-763-693-715"],
-	email: "office@fiscontsrl.ro",
+	email: "office@tcasafework.ro",
 	address: {
 		"@type": "PostalAddress",
 		streetAddress: "Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3",
 		addressLocality: "București",
+		addressRegion: "București",
 		addressCountry: "RO",
 	},
-	areaServed: {
-		"@type": "Country",
-		name: "România",
-	},
+	areaServed: [
+		{ "@type": "City", name: "București" },
+		{ "@type": "Country", name: "România" },
+	],
 	serviceType: [
 		"Serviciu extern SSM",
 		"PSI / situații de urgență",
@@ -57,9 +72,86 @@ const organizationSchema = {
 	],
 	sameAs: ["https://www.facebook.com/profile.php?id=61591444305432"],
 	priceRange: "$$",
+	currenciesAccepted: "RON",
+	paymentAccepted: "Cash, Bank Transfer",
+	availableLanguage: "Romanian",
+	knowsAbout: [
+		"Securitate și sănătate în muncă",
+		"Prevenirea și stingerea incendiilor",
+		"Situații de urgență",
+		"Protecție civilă",
+		"Legea 319/2006",
+	],
+	contactPoint: {
+		"@type": "ContactPoint",
+		telephone: "+40-762-682-850",
+		contactType: "sales",
+		areaServed: "RO",
+		availableLanguage: ["Romanian"],
+		email: "office@tcasafework.ro",
+	},
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Servicii SSM și PSI",
+		itemListElement: [
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Serviciu extern SSM",
+					url: serviciiUrl,
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "PSI / situații de urgență",
+					url: serviciiUrl,
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: {
+					"@type": "Service",
+					name: "Consultanță protecție civilă",
+					url: serviciiUrl,
+				},
+			},
+		],
+	},
 };
 
-const schemas = [organizationSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"@id": new URL("#website", siteUrl).href,
+	name: siteName,
+	url: siteUrl.href,
+	inLanguage: "ro-RO",
+	description: orgDescription,
+	publisher: { "@id": new URL("#organizatie", siteUrl).href },
+};
+
+const webPageSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	"@id": `${canonicalURL.href}#webpage`,
+	url: canonicalURL.href,
+	name: fullTitle,
+	description,
+	inLanguage: "ro-RO",
+	isPartOf: { "@id": new URL("#website", siteUrl).href },
+	about: { "@id": new URL("#organizatie", siteUrl).href },
+	primaryImageOfPage: ogImage.href,
+};
+
+const schemas = [
+	organizationSchema,
+	websiteSchema,
+	webPageSchema,
+	...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+];
 ---
 
 <!doctype html>
@@ -69,6 +161,8 @@ const schemas = [organizationSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
 		<link rel="icon" type="image/png" href={`${base}favicon.png`} />
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
 		<link rel="apple-touch-icon" href={`${base}logo.png`} />
+		<link rel="manifest" href={`${base}site.webmanifest`} />
+		<link rel="sitemap" type="application/xml" href={`${base}sitemap-index.xml`} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
@@ -77,8 +171,15 @@ const schemas = [organizationSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
 			content="serviciu extern SSM, SSM București, PSI, situații de urgență, ITM, protecție civilă, securitate și sănătate în muncă, TCA SAFEWORK"
 		/>
 		<meta name="author" content="TCA SAFEWORK" />
-		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="robots" content={robots} />
+		<meta name="googlebot" content={robots} />
+		<meta name="application-name" content={siteName} />
+		<meta name="geo.region" content="RO-B" />
+		<meta name="geo.placename" content="București" />
+		<meta name="format-detection" content="telephone=yes" />
 		<link rel="canonical" href={canonicalURL} />
+		<link rel="alternate" hreflang="ro" href={canonicalURL} />
+		<link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
 		<meta property="og:title" content={fullTitle} />
 		<meta property="og:description" content={description} />
@@ -88,6 +189,9 @@ const schemas = [organizationSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
 		<meta property="og:locale" content="ro_RO" />
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:alt" content={ogImageAlt} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:type" content="image/jpeg" />
 
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={fullTitle} />
@@ -96,6 +200,12 @@ const schemas = [organizationSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
 		<meta name="twitter:image:alt" content={ogImageAlt} />
 
 		<meta name="theme-color" content="#1a1614" />
+
+		{
+			preloadImage && (
+				<link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />
+			)
+		}
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -112,8 +222,9 @@ const schemas = [organizationSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
 		}
 	</head>
 	<body>
+		<a class="skip-link" href="#continut">Sari la conținut</a>
 		<Header />
-		<main class="site-main">
+		<main class="site-main" id="continut">
 			<slot />
 		</main>
 		<Footer />

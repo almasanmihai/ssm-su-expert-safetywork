@@ -1,34 +1,44 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { breadcrumbSchema } from "../lib/seo";
 
 const base = import.meta.env.BASE_URL;
+const siteUrl = new URL(base, Astro.site);
 ---
 
 <BaseLayout
-	title="Contact — solicită oferta SSM și PSI"
-	description="Contact TCA SAFEWORK: ofertă SSM și PSI / SU în maximum 24 de ore. Telefon 0762 682 850 / 0763 693 715."
-	jsonLd={{
-		"@context": "https://schema.org",
-		"@type": "ContactPage",
-		name: "Contact TCA SAFEWORK",
-		description: "Solicită oferta pentru serviciu extern SSM și PSI / situații de urgență.",
-		url: Astro.url.href,
-		mainEntity: {
-			"@type": "Organization",
-			name: "TCA SAFEWORK",
-			telephone: ["+40-762-682-850", "+40-763-693-715"],
-			email: "office@fiscontsrl.ro",
-			address: {
-				"@type": "PostalAddress",
-				streetAddress: "Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3",
-				addressLocality: "București",
-				addressCountry: "RO",
+	title="Contact — ofertă SSM și PSI"
+	description="Contact TCA SAFEWORK — cere oferta SSM și PSI / SU. Răspuns în maximum 24 de ore. Tel. 0762 682 850 / 0763 693 715, București."
+	jsonLd={[
+		{
+			"@context": "https://schema.org",
+			"@type": "ContactPage",
+			name: "Contact TCA SAFEWORK",
+			description: "Solicită oferta pentru serviciu extern SSM și PSI / situații de urgență.",
+			url: new URL("contact/", siteUrl).href,
+			mainEntity: {
+				"@type": "Organization",
+				name: "TCA SAFEWORK",
+				telephone: ["+40-762-682-850", "+40-763-693-715"],
+				email: "office@tcasafework.ro",
+				address: {
+					"@type": "PostalAddress",
+					streetAddress: "Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3",
+					addressLocality: "București",
+					addressCountry: "RO",
+				},
 			},
 		},
-	}}
+		breadcrumbSchema([
+			{ name: "Acasă", url: siteUrl.href },
+			{ name: "Contact", url: new URL("contact/", siteUrl).href },
+		]),
+	]}
 >
 	<section class="page-hero">
 		<div class="container reveal">
+			<Breadcrumbs items={[{ label: "Contact" }]} />
 			<span class="eyebrow">Contact</span>
 			<h1>Solicită oferta</h1>
 			<p>
@@ -53,7 +63,7 @@ const base = import.meta.env.BASE_URL;
 					</li>
 					<li>
 						<span>Email</span>
-						<a href="mailto:office@fiscontsrl.ro">office@fiscontsrl.ro</a>
+						<a href="mailto:office@tcasafework.ro">office@tcasafework.ro</a>
 					</li>
 					<li>
 						<span>Adresă</span>
@@ -70,38 +80,51 @@ const base = import.meta.env.BASE_URL;
 				</ul>
 			</div>
 
-			<form class="contact-form reveal" id="formular" action={`mailto:office@fiscontsrl.ro`} method="post" enctype="text/plain">
+			<form class="contact-form reveal" id="formular" action="/contact.php" method="post">
 				<h2>Formular ofertă</h2>
 				<p class="form-intro">
 					Completează formularul de mai jos și primești oferta exactă în cel mult 24 de ore.
 				</p>
+				<div class="hp" aria-hidden="true">
+					<label>
+						Website
+						<input type="text" name="website" tabindex="-1" autocomplete="off" />
+					</label>
+				</div>
+				<input type="hidden" name="form_ts" id="form_ts" value="" />
 				<label>
 					Nume și prenume
-					<input type="text" name="nume" required autocomplete="name" placeholder="Nume Prenume" />
+					<input type="text" name="nume" required autocomplete="name" maxlength="120" placeholder="Nume Prenume" />
 				</label>
 				<label>
 					Telefon
-					<input type="tel" name="telefon" required autocomplete="tel" placeholder="07xx xxx xxx" />
+					<input type="tel" name="telefon" required autocomplete="tel" maxlength="40" placeholder="07xx xxx xxx" />
 				</label>
 				<label>
 					Email
-					<input type="email" name="email" required autocomplete="email" placeholder="email@firma.ro" />
+					<input type="email" name="email" required autocomplete="email" maxlength="120" placeholder="email@firma.ro" />
 				</label>
 				<label>
 					Domeniu de activitate
-					<input type="text" name="domeniu" required placeholder="Ex: construcții, comerț, producție" />
+					<input type="text" name="domeniu" required maxlength="200" placeholder="Ex: construcții, comerț, producție" />
 				</label>
 				<label>
 					Număr de angajați
-					<input type="number" name="angajati" required min="1" placeholder="Ex: 12" />
+					<input type="number" name="angajati" required min="1" max="999999" maxlength="10" placeholder="Ex: 12" />
 				</label>
 				<label>
 					Locația
-					<input type="text" name="locatie" required autocomplete="address-level2" placeholder="Oraș / județ" />
+					<input type="text" name="locatie" required autocomplete="address-level2" maxlength="120" placeholder="Oraș / județ" />
 				</label>
 				<label>
 					Mesaj
-					<textarea name="mesaj" rows="4" placeholder="Alte detalii utile (opțional)"></textarea>
+					<textarea name="mesaj" rows="4" maxlength="2000" placeholder="Alte detalii utile (opțional)"></textarea>
+				</label>
+				<label class="gdpr-label">
+					<input type="checkbox" name="gdpr" value="1" required />
+					<span>
+						Sunt de acord cu prelucrarea datelor conform <a href={`${base}confidentialitate/`}>Politicii de confidențialitate</a>.
+					</span>
 				</label>
 				<button class="btn btn-primary" type="submit">Trimite solicitarea</button>
 				<p class="form-status" id="form-status" hidden></p>
@@ -182,6 +205,7 @@ const base = import.meta.env.BASE_URL;
 	}
 
 	.contact-form {
+		position: relative;
 		display: grid;
 		gap: 0.9rem;
 		padding: 1.5rem;
@@ -227,11 +251,47 @@ const base = import.meta.env.BASE_URL;
 		margin-top: 0.25rem;
 	}
 
+	.hp {
+		position: absolute;
+		left: -10000px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	.gdpr-label {
+		display: flex;
+		gap: 0.65rem;
+		align-items: flex-start;
+		font-weight: 500;
+		font-size: 0.88rem;
+		line-height: 1.45;
+	}
+
+	.gdpr-label input {
+		width: auto;
+		margin-top: 0.2rem;
+		flex-shrink: 0;
+	}
+
+	.gdpr-label a {
+		color: var(--color-brown);
+		font-weight: 700;
+	}
+
 	.form-status {
 		margin: 0;
 		font-size: 0.92rem;
 		color: var(--color-brown);
 		font-weight: 600;
+	}
+
+	.form-status.is-success {
+		color: #2f6b3a;
+	}
+
+	.form-status.is-error {
+		color: var(--color-brown);
 	}
 
 	@media (max-width: 800px) {
@@ -245,40 +305,51 @@ const base = import.meta.env.BASE_URL;
 <script>
 	const form = document.getElementById("formular") as HTMLFormElement | null;
 	const status = document.getElementById("form-status");
+	const tsField = document.getElementById("form_ts") as HTMLInputElement | null;
+	const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
 
-	form?.addEventListener("submit", (event) => {
+	if (tsField) {
+		tsField.value = String(Math.floor(Date.now() / 1000));
+	}
+
+	function showStatus(message: string, ok: boolean) {
+		if (!status) return;
+		status.hidden = false;
+		status.textContent = message;
+		status.classList.toggle("is-success", ok);
+		status.classList.toggle("is-error", !ok);
+	}
+
+	form?.addEventListener("submit", async (event) => {
 		event.preventDefault();
-		const data = new FormData(form);
-		const nume = String(data.get("nume") || "").trim();
-		const telefon = String(data.get("telefon") || "").trim();
-		const email = String(data.get("email") || "").trim();
-		const domeniu = String(data.get("domeniu") || "").trim();
-		const angajati = String(data.get("angajati") || "").trim();
-		const locatie = String(data.get("locatie") || "").trim();
-		const mesaj = String(data.get("mesaj") || "").trim();
+		if (!form) return;
 
-		const subject = encodeURIComponent(`Solicitare ofertă SSM/PSI — ${nume}`);
-		const body = encodeURIComponent(
-			[
-				`Nume: ${nume}`,
-				`Telefon: ${telefon}`,
-				`Email: ${email}`,
-				`Domeniu de activitate: ${domeniu}`,
-				`Număr de angajați: ${angajati}`,
-				`Locația: ${locatie}`,
-				"",
-				"Mesaj:",
-				mesaj || "(fără mesaj)",
-				"",
-				"— Trimis de pe site-ul TCA SAFEWORK",
-			].join("\n"),
-		);
+		showStatus("Se trimite solicitarea…", true);
+		if (submitBtn) submitBtn.disabled = true;
 
-		window.location.href = `mailto:office@fiscontsrl.ro?subject=${subject}&body=${body}`;
-
-		if (status) {
-			status.hidden = false;
-			status.textContent = "Se deschide clientul de e-mail. Poți trimite și sunând la numerele din stânga.";
+		try {
+			const response = await fetch(form.action, {
+				method: "POST",
+				body: new FormData(form),
+				headers: { Accept: "application/json" },
+			});
+			const payload = (await response.json()) as { ok?: boolean; message?: string };
+			const ok = Boolean(payload.ok);
+			showStatus(
+				payload.message ||
+					(ok
+						? "Mesajul a fost trimis. Te contactăm în maximum 24 de ore."
+						: "Mesajul nu a putut fi trimis. Încearcă din nou sau sună-ne."),
+				ok,
+			);
+			if (ok) {
+				form.reset();
+				if (tsField) tsField.value = String(Math.floor(Date.now() / 1000));
+			}
+		} catch {
+			showStatus("Mesajul nu a putut fi trimis. Încearcă din nou sau sună-ne.", false);
+		} finally {
+			if (submitBtn) submitBtn.disabled = false;
 		}
 	});
 </script>
