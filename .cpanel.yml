@@ -1,0 +1,17 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/cp -f .htaccess $DEPLOYPATH
+    - /bin/cp -f contact.php $DEPLOYPATH
+    - /bin/cp -f index.html $DEPLOYPATH
+    - /bin/cp -f 404.html $DEPLOYPATH
+    - /bin/cp -f robots.txt $DEPLOYPATH
+    - /bin/sh -c 'for f in favicon.svg favicon.png favicon.ico logo.svg logo.png logo-64.png site.webmanifest sitemap-index.xml sitemap-0.xml; do [ -e "$f" ] && /bin/cp -f "$f" "$DEPLOYPATH"; done'
+    - /bin/cp -Rf _astro $DEPLOYPATH
+    - /bin/cp -Rf images $DEPLOYPATH
+    - /bin/cp -Rf servicii $DEPLOYPATH
+    - /bin/cp -Rf despre $DEPLOYPATH
+    - /bin/cp -Rf contact $DEPLOYPATH
+    - /bin/cp -Rf confidentialitate $DEPLOYPATH
+    - /bin/cp -Rf phpmailer $DEPLOYPATH

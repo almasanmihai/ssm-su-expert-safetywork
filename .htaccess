@@ -1,0 +1,73 @@
+Options -Indexes
+ServerSignature Off
+AddType application/manifest+json .webmanifest
+
+RewriteEngine On
+
+# HTTP → HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# www → fără www
+RewriteCond %{HTTP_HOST} ^www\.tcasafework\.ro$ [NC]
+RewriteRule ^ https://tcasafework.ro%{REQUEST_URI} [L,R=301]
+
+# Blochează fișiere și foldere sensibile
+RewriteRule (^|/)\.git - [F,L]
+RewriteRule ^phpmailer(/|$) - [F,L]
+RewriteRule \.(yml|yaml|md|lock)$ - [F,L]
+RewriteRule (^|/)config(\.php|\.example\.php)?$ - [F,L]
+RewriteRule (^|/)\.cpanel\.yml$ - [F,L]
+
+ErrorDocument 404 /404.html
+
+<FilesMatch "\.(yml|yaml|md|lock)$">
+	Require all denied
+</FilesMatch>
+
+<FilesMatch "^(config\.php|config\.example\.php|\.cpanel\.yml)$">
+	Require all denied
+</FilesMatch>
+
+<Files "contact.php">
+	<IfModule mod_headers.c>
+		Header set X-Robots-Tag "noindex, nofollow"
+	</IfModule>
+</Files>
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml application/xml application/xml+rss
+</IfModule>
+
+<IfModule mod_brotli.c>
+	AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml application/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType text/html "access plus 5 minutes"
+	ExpiresByType text/css "access plus 1 year"
+	ExpiresByType application/javascript "access plus 1 year"
+	ExpiresByType image/webp "access plus 1 year"
+	ExpiresByType image/jpeg "access plus 1 year"
+	ExpiresByType image/png "access plus 1 year"
+	ExpiresByType image/svg+xml "access plus 1 year"
+	ExpiresByType image/x-icon "access plus 1 year"
+	ExpiresByType font/woff2 "access plus 1 year"
+	ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header set X-Content-Type-Options "nosniff"
+	Header set X-Frame-Options "SAMEORIGIN"
+	Header set Referrer-Policy "strict-origin-when-cross-origin"
+	Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+	<FilesMatch "\.(html)$">
+		Header set Cache-Control "public, max-age=300, must-revalidate"
+	</FilesMatch>
+	<FilesMatch "\.(css|js|webp|jpg|jpeg|png|svg|ico|woff2)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+</IfModule>
