@@ -70,7 +70,7 @@ const siteUrl = new URL(base, Astro.site);
 	<section class="section fiscont">
 		<div class="container fiscont-inner reveal">
 			<span class="eyebrow">Parteneriat</span>
-			<h2>În ecosistemul Fiscont</h2>
+			<h2>În ecosistemul <a href="https://www.fiscontsrl.ro/" target="_blank" rel="noopener noreferrer">Fiscont</a></h2>
 			<p>
 				Colaborăm în cadrul unui ecosistem de servicii conexe, astfel încât clienții care au nevoie de SSM sau
 				situații de urgență să primească sprijin specializat, cu o identitate proprie și clară.
@@ -126,6 +126,16 @@ const siteUrl = new URL(base, Astro.site);
 		font-size: clamp(1.75rem, 4vw, 2.5rem);
 		color: var(--color-white);
 		margin-bottom: 0.85rem;
+	}
+
+	.fiscont h2 a {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 0.18em;
+	}
+
+	.fiscont h2 a:hover {
+		color: var(--color-yellow);
 	}
 
 	.fiscont p {
