@@ -2,7 +2,7 @@
 
 Site-ul se construiește pe GitHub (branch `hostico`) și se copiază pe cPanel. Nu rulați `npm` pe server.
 
-Înlocuiți peste tot `USERCPANEL` cu userul cPanel (îl vedeți în colțul dreapta-sus din cPanel).
+Userul cPanel îl vedeți în colțul dreapta-sus. `.cpanel.yml` copiază singur în `$HOME/public_html/` — nu mai înlocuiți un nume de user în fișier.
 
 > Formularul de pe `astro dev` **nu trimite mail** (nu rulează PHP). Testul real e doar pe Hostico, după pașii 1–2.
 
@@ -48,10 +48,9 @@ Valori implicite din exemplu:
 3. Clone URL: repo-ul public GitHub.
 4. Branch: **`hostico`** (nu `main` — `main` are sursa Astro, nu site-ul compilat).
 5. Repository Path: lăsați calea implicită (ex. `/home/USERCPANEL/repositories/...`).
-6. În `.cpanel.yml` din acest repo, înlocuiți `USERCPANEL` cu userul cPanel, faceți commit + push, apoi așteptați din nou Action-ul. Nu lăsați placeholder-ul: la următorul Update from Remote s-ar suprascrie o editare făcută doar în cPanel.
-7. **Update from Remote**, apoi **Deploy HEAD Commit**.
+6. **Update from Remote**, apoi **Deploy HEAD Commit**.
 
-`.cpanel.yml` copiază doar fișierele publice în `/home/USERCPANEL/public_html/` (inclusiv `contact.php` și `phpmailer/`).
+`.cpanel.yml` copiază doar fișierele publice în `public_html` (inclusiv `contact.php` și `phpmailer/`).
 
 ## 4. SSL
 

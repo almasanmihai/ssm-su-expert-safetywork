@@ -3,11 +3,11 @@
  * Config SMTP pentru formularul de contact.
  *
  * Copiază PE SERVER la:
- *   /home/USERCPANEL/tcasafework-config/config.php
+ *   /home/USERUL_CPANEL/tcasafework-config/config.php
  *
  * - Folderul e lângă public_html, NU înăuntru.
  * - Nu se urcă pe git (vezi .gitignore).
- * - Înlocuiește USERCPANEL și PAROLA_EMAIL înainte de a salva.
+ * - Înlocuiește PAROLA_EMAIL înainte de a salva.
  * - Pași compleți: DEPLOY.md (checklist formular).
  */
 return [

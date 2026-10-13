@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/USERCPANEL/public_html/
+    - export DEPLOYPATH=$HOME/public_html/
     - /bin/cp -f .htaccess $DEPLOYPATH
     - /bin/cp -f contact.php $DEPLOYPATH
     - /bin/cp -f index.html $DEPLOYPATH

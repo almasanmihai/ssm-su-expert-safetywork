@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { company, companyAddress } from "../lib/company";
 import { breadcrumbSchema } from "../lib/seo";
 
 const base = import.meta.env.BASE_URL;
@@ -28,9 +29,9 @@ const siteUrl = new URL(base, Astro.site);
 		<div class="container prose reveal">
 			<h2>Operatorul de date</h2>
 			<p>
-				Datele sunt prelucrate de TCA SAFEWORK, cu sediul în Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3,
-				București, email <a href="mailto:office@tcasafework.ro">office@tcasafework.ro</a>, telefon 0762 682 850
-				/ 0763 693 715.
+				Datele sunt prelucrate de {company.legalName}, CUI {company.cui}, număr de ordine în Registrul
+				Comerțului {company.tradeRegister}, cu sediul în {companyAddress}, email{" "}
+				<a href={`mailto:${company.email}`}>{company.email}</a>, telefon 0762 682 850 / 0763 693 715.
 			</p>
 
 			<h2>Ce date colectăm</h2>

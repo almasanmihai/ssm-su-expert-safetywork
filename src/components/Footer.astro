@@ -1,4 +1,6 @@
 ---
+import { company, companyAddress } from "../lib/company";
+
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
@@ -17,7 +19,7 @@ const year = new Date().getFullYear();
 			<a href="tel:+40762682850">0762 682 850</a>
 			<a href="tel:+40763693715">0763 693 715</a>
 			<a href="mailto:office@tcasafework.ro">office@tcasafework.ro</a>
-			<span class="footer-address">Bd. Unirii nr. 64, Bl. K4, sc. 4, et. 3, București</span>
+			<span class="footer-address">{companyAddress}</span>
 		</div>
 		<div>
 			<p class="footer-label">Navigare</p>
@@ -32,7 +34,9 @@ const year = new Date().getFullYear();
 		</div>
 	</div>
 	<div class="container footer-bottom">
-		<p>© {year} TCA SAFEWORK. Toate drepturile rezervate.</p>
+		<p>
+			© {year} {company.legalName} · CUI {company.cui} · {company.tradeRegister}
+		</p>
 	</div>
 </footer>
 

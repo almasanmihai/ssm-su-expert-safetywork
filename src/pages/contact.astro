@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { company, companyAddress } from "../lib/company";
 import { breadcrumbSchema } from "../lib/seo";
 
 const base = import.meta.env.BASE_URL;
@@ -19,13 +20,15 @@ const siteUrl = new URL(base, Astro.site);
 			url: new URL("contact/", siteUrl).href,
 			mainEntity: {
 				"@type": "Organization",
-				name: "TCA SAFEWORK",
+				name: company.legalName,
+				taxID: company.cui,
 				telephone: ["+40-762-682-850", "+40-763-693-715"],
-				email: "office@tcasafework.ro",
+				email: company.email,
 				address: {
 					"@type": "PostalAddress",
-					streetAddress: "Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3",
-					addressLocality: "București",
+					streetAddress: company.street,
+					addressLocality: company.city,
+					addressRegion: company.sector,
 					addressCountry: "RO",
 				},
 			},
@@ -66,10 +69,13 @@ const siteUrl = new URL(base, Astro.site);
 						<a href="mailto:office@tcasafework.ro">office@tcasafework.ro</a>
 					</li>
 					<li>
-						<span>Adresă</span>
-						<span class="contact-plain"
-							>Bd. Unirii nr. 64, Bloc K4, scara 4, et. 3, București</span
-						>
+						<span>Sediu social</span>
+						<span class="contact-plain">{companyAddress}</span>
+					</li>
+					<li>
+						<span>Date firmă</span>
+						<span class="contact-plain">{company.legalName}</span>
+						<span class="contact-plain">CUI {company.cui} · {company.tradeRegister}</span>
 					</li>
 					<li>
 						<span>Facebook</span>
@@ -192,9 +198,11 @@ const siteUrl = new URL(base, Astro.site);
 		color: var(--color-brown);
 	}
 
-	.contact-plain {
+	.contact-list .contact-plain {
 		font-size: 1.05rem;
 		font-weight: 600;
+		letter-spacing: 0;
+		text-transform: none;
 		color: var(--color-ink);
 		line-height: 1.45;
 	}
