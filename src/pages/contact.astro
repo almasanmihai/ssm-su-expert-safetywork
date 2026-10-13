@@ -267,19 +267,22 @@ const siteUrl = new URL(base, Astro.site);
 		overflow: hidden;
 	}
 
-	.gdpr-label {
+	.contact-form label.gdpr-label {
 		display: flex;
-		gap: 0.65rem;
+		flex-direction: row;
 		align-items: flex-start;
+		gap: 0.65rem;
 		font-weight: 500;
 		font-size: 0.88rem;
 		line-height: 1.45;
 	}
 
-	.gdpr-label input {
-		width: auto;
-		margin-top: 0.2rem;
-		flex-shrink: 0;
+	.contact-form label.gdpr-label input {
+		width: 1.05rem;
+		height: 1.05rem;
+		margin: 0.15rem 0 0;
+		padding: 0;
+		flex: 0 0 auto;
 	}
 
 	.gdpr-label a {

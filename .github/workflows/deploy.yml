@@ -31,5 +31,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: hostico
-          force_orphan: true
           commit_message: Build site for Hostico
