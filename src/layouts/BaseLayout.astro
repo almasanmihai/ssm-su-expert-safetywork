@@ -19,7 +19,7 @@ interface Props {
 const {
 	title,
 	description = "Serviciu extern SSM abilitat ITM București și PSI / situații de urgență. Un singur abonament pentru documentație, instruiri și asistență la control.",
-	image = "images/og-cover.jpg",
+	image = "images/og-cover.jpg?v=2",
 	absoluteTitle = false,
 	jsonLd,
 	robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
@@ -33,7 +33,7 @@ const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
 const siteUrl = new URL(import.meta.env.BASE_URL, Astro.site);
 const base = import.meta.env.BASE_URL;
 const ogImage = new URL(image.replace(/^\//, ""), siteUrl);
-const ogImageAlt = "TCA SAFEWORK — serviciu extern SSM și PSI / situații de urgență";
+const ogImageAlt = "Consultanți SSM pe șantier — verificare documentație, cu căști și veste reflectorizante";
 const orgDescription =
 	"Serviciu extern SSM abilitat ITM București și PSI / situații de urgență. Un singur abonament pentru documentație, instruiri și asistență la control.";
 const serviciiUrl = new URL("servicii/", siteUrl).href;
