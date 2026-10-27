@@ -50,7 +50,7 @@ const highlights = [
 			</picture>
 		</div>
 		<div class="hero-overlay" aria-hidden="true"></div>
-		<div class="container hero-content">
+		<div class="hero-content">
 			<p class="hero-brand">TCA SAFEWORK</p>
 			<h1>Un singur furnizor pentru SSM și PSI/SU</h1>
 			<p class="hero-lead">
@@ -177,7 +177,7 @@ const highlights = [
 		position: relative;
 		min-height: calc(100svh - var(--header-h));
 		display: grid;
-		align-items: end;
+		align-items: center;
 		overflow: hidden;
 		color: var(--color-white);
 	}
@@ -221,8 +221,10 @@ const highlights = [
 	.hero-content {
 		position: relative;
 		z-index: 1;
+		width: min(44rem, calc(100% - 2.5rem));
+		margin-left: max(1.25rem, calc((100% - 1120px) / 2));
+		margin-right: auto;
 		padding: 5rem 0 4.5rem;
-		max-width: 44rem;
 		animation: heroIn 0.9s var(--ease) both;
 	}
 
